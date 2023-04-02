@@ -10,7 +10,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/simor/Programming Files/backtester/src/data/DataHandler.cpp" "CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj" "gcc" "CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj.d"
   "C:/Users/simor/Programming Files/backtester/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp" "CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj" "gcc" "CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj.d"
-  "C:/Users/simor/Programming Files/backtester/src/event/Event.cpp" "CMakeFiles/backtester.dir/src/event/Event.cpp.obj" "gcc" "CMakeFiles/backtester.dir/src/event/Event.cpp.obj.d"
   "C:/Users/simor/Programming Files/backtester/src/main.cpp" "CMakeFiles/backtester.dir/src/main.cpp.obj" "gcc" "CMakeFiles/backtester.dir/src/main.cpp.obj.d"
   )
 

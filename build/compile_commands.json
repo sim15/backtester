@@ -1,12 +1,6 @@
 [
 {
   "directory": "C:/Users/simor/Programming Files/backtester/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/backtester.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\backtester.dir\\src\\event\\Event.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\src\\event\\Event.cpp\"",
-  "file": "C:/Users/simor/Programming Files/backtester/src/event/Event.cpp",
-  "output": "CMakeFiles/backtester.dir/src/event/Event.cpp.obj"
-},
-{
-  "directory": "C:/Users/simor/Programming Files/backtester/build",
   "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/backtester.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\backtester.dir\\src\\data\\DataHandler.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\src\\data\\DataHandler.cpp\"",
   "file": "C:/Users/simor/Programming Files/backtester/src/data/DataHandler.cpp",
   "output": "CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj"

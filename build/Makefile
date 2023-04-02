@@ -322,30 +322,6 @@ src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.s
 .PHONY : src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.s
 
-src/event/Event.obj: src/event/Event.cpp.obj
-.PHONY : src/event/Event.obj
-
-# target to build an object file
-src/event/Event.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/event/Event.cpp.obj
-.PHONY : src/event/Event.cpp.obj
-
-src/event/Event.i: src/event/Event.cpp.i
-.PHONY : src/event/Event.i
-
-# target to preprocess a source file
-src/event/Event.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/event/Event.cpp.i
-.PHONY : src/event/Event.cpp.i
-
-src/event/Event.s: src/event/Event.cpp.s
-.PHONY : src/event/Event.s
-
-# target to generate assembly for a file
-src/event/Event.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/event/Event.cpp.s
-.PHONY : src/event/Event.cpp.s
-
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -421,9 +397,6 @@ help:
 	@echo ... src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.obj
 	@echo ... src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.i
 	@echo ... src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.s
-	@echo ... src/event/Event.obj
-	@echo ... src/event/Event.i
-	@echo ... src/event/Event.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

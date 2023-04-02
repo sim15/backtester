@@ -163,6 +163,22 @@ CMakeFiles/backtester.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/12.2.0/tuple \
  C:/msys64/mingw64/include/c++/12.2.0/bits/stl_multimap.h \
  C:/msys64/mingw64/include/c++/12.2.0/bits/erase_if.h \
+ C:/msys64/mingw64/include/c++/12.2.0/memory \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/stl_tempbuf.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/stl_raw_storage_iter.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/align.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bit \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/unique_ptr.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_base.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/allocated_ptr.h \
+ C:/msys64/mingw64/include/c++/12.2.0/ext/concurrence.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/shared_ptr_atomic.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/atomic_base.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/atomic_lockfree_defines.h \
+ C:/msys64/mingw64/include/c++/12.2.0/backward/auto_ptr.h \
+ C:/msys64/mingw64/include/c++/12.2.0/pstl/glue_memory_defs.h \
+ C:/msys64/mingw64/include/c++/12.2.0/pstl/execution_defs.h \
  C:/Users/simor/PROGRA~1/BACKTE~1/src/data/Date.hpp \
  C:/Users/simor/PROGRA~1/BACKTE~1/src/data/sampleHandlers/YahooFinanceCSV/OHLCAVData.hpp \
  C:/Users/simor/PROGRA~1/BACKTE~1/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.hpp
