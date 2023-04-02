@@ -64,6 +64,16 @@ CMAKE_BINARY_DIR = "C:\Users\simor\Programming Files\backtester\build"
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	"C:\Program Files\CMake\bin\ctest.exe" --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -174,6 +184,19 @@ backtester/fast:
 .PHONY : backtester/fast
 
 #=============================================================================
+# Target rules for targets named back_test
+
+# Build rule for target.
+back_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 back_test
+.PHONY : back_test
+
+# fast build rule for target.
+back_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/build
+.PHONY : back_test/fast
+
+#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -251,6 +274,54 @@ ALibraryTests/fast:
 	$(MAKE) $(MAKESILENT) -f libs\A\test\CMakeFiles\ALibraryTests.dir\build.make libs/A/test/CMakeFiles/ALibraryTests.dir/build
 .PHONY : ALibraryTests/fast
 
+src/data/DataHandler.obj: src/data/DataHandler.cpp.obj
+.PHONY : src/data/DataHandler.obj
+
+# target to build an object file
+src/data/DataHandler.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj
+.PHONY : src/data/DataHandler.cpp.obj
+
+src/data/DataHandler.i: src/data/DataHandler.cpp.i
+.PHONY : src/data/DataHandler.i
+
+# target to preprocess a source file
+src/data/DataHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/data/DataHandler.cpp.i
+.PHONY : src/data/DataHandler.cpp.i
+
+src/data/DataHandler.s: src/data/DataHandler.cpp.s
+.PHONY : src/data/DataHandler.s
+
+# target to generate assembly for a file
+src/data/DataHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/data/DataHandler.cpp.s
+.PHONY : src/data/DataHandler.cpp.s
+
+src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.obj: src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj
+.PHONY : src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.obj
+
+# target to build an object file
+src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj
+.PHONY : src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj
+
+src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.i: src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.i
+.PHONY : src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.i
+
+# target to preprocess a source file
+src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.i
+.PHONY : src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.i
+
+src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.s: src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.s
+.PHONY : src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.s
+
+# target to generate assembly for a file
+src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.s
+.PHONY : src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.s
+
 src/event/Event.obj: src/event/Event.cpp.obj
 .PHONY : src/event/Event.obj
 
@@ -299,6 +370,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+test/back_test.obj: test/back_test.cpp.obj
+.PHONY : test/back_test.obj
+
+# target to build an object file
+test/back_test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/test/back_test.cpp.obj
+.PHONY : test/back_test.cpp.obj
+
+test/back_test.i: test/back_test.cpp.i
+.PHONY : test/back_test.i
+
+# target to preprocess a source file
+test/back_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/test/back_test.cpp.i
+.PHONY : test/back_test.cpp.i
+
+test/back_test.s: test/back_test.cpp.s
+.PHONY : test/back_test.s
+
+# target to generate assembly for a file
+test/back_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/test/back_test.cpp.s
+.PHONY : test/back_test.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -311,19 +406,30 @@ help:
 	@echo ... install/strip
 	@echo ... list_install_components
 	@echo ... rebuild_cache
+	@echo ... test
 	@echo ... A
 	@echo ... ALibraryTests
+	@echo ... back_test
 	@echo ... backtester
 	@echo ... gmock
 	@echo ... gmock_main
 	@echo ... gtest
 	@echo ... gtest_main
+	@echo ... src/data/DataHandler.obj
+	@echo ... src/data/DataHandler.i
+	@echo ... src/data/DataHandler.s
+	@echo ... src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.obj
+	@echo ... src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.i
+	@echo ... src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.s
 	@echo ... src/event/Event.obj
 	@echo ... src/event/Event.i
 	@echo ... src/event/Event.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... test/back_test.obj
+	@echo ... test/back_test.i
+	@echo ... test/back_test.s
 .PHONY : help
 
 

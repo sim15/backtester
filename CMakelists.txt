@@ -1,24 +1,116 @@
 cmake_minimum_required(VERSION 3.7.2)
-project(backtester)
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
+# GoogleTest requires at least C++14
+# string_view in CSVRow requires C++17
+set(CMAKE_CXX_STANDARD 17)
 
-# set(CMAKE_BUILD_TYPE Release)
+set(PROJECT_NAME
+    backtester
+)
 
-# # set(CMAKE_CXX_STANDARD 14)
-# # set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-# if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-# set(WIN32 ON)
-# set(MACOS OFF)
-# set(LINUX OFF)
-# elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-# set(WIN32 OFF)
-# set(MACOS ON)
-# set(LINUX OFF)
-# else()
-# set(WIN32 OFF)
-# set(MACOS OFF)
-# set(LINUX ON)
-# endif()
+set(SOURCE_DIR
+    src
+)
+
+set(TEST_DIR
+    test
+)
+
+set(SOURCE
+    ${SOURCE_DIR}/main.cpp
+)
+
+set(LIBRARIES_DIR
+    libs
+)
+
+project(${PROJECT_NAME})
+
+set(LIBRARIES
+    A
+)
+
+# ########
+# GTest
+# ########
+include(FetchContent)
+FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/archive/e49c6b946a44f9a58586bfc76f75687d8f77e725.zip
+)
+
+# # For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+# add_subdirectory(libs/gtest-1.7.0)
+# enable_testing()
+# include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+# ##########
+# Project
+# ##########
+# add_executable(${PROJECT_NAME} ${SOURCE})
+include_directories(${PROJECT_SOURCE_DIR}/src)
+
+set(SOURCE_FILES
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/Event.cpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/Event.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/CSVRow.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/Date.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/Data.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/DataHandler.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/DataHandler.cpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/OHLCAVData.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/main.cpp
+)
+
+add_executable(${PROJECT_NAME} "${SOURCE_FILES}")
+
+foreach(LIBRARY ${LIBRARIES})
+    add_subdirectory("${LIBRARIES_DIR}/${LIBRARY}")
+endforeach(LIBRARY)
+
+target_link_libraries(${PROJECT_NAME} ${LIBRARIES})
+
+# https://medium.com/swlh/c-project-structure-for-cmake-67d60135f6f5
+# This basically let me import Backtester.h as #include "Backtester.h"
+# when I used it internally in my library and as #include <BacktestLib/Backtester.h>
+# when library is exposed to someone else.
+set(LIBRARY_NAME
+    backtester
+)
+
+target_include_directories(${LIBRARY_NAME} PRIVATE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/${LIBRARY_NAME}>
+    $<INSTALL_INTERFACE:include/${LIBRARY_NAME}>
+)
+target_include_directories(${LIBRARY_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
+
+# https://stackoverflow.com/questions/45933732/how-to-specify-a-compiler-in-cmake
+
+# #########################
+# TESTING
+# #########################
+enable_testing()
+
+set(TEST_FILES
+    ${TEST_DIR}/back_test.cpp
+)
+
+add_executable(
+    back_test
+    "${TEST_FILES}"
+)
+target_link_libraries(
+    back_test
+    GTest::gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(back_test)

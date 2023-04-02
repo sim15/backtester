@@ -4,6 +4,7 @@ CMakeFiles/backtester.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++config.h \
  C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/os_defines.h \
  C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+ C:/msys64/mingw64/include/c++/12.2.0/pstl/pstl_config.h \
  C:/msys64/mingw64/include/c++/12.2.0/ostream \
  C:/msys64/mingw64/include/c++/12.2.0/ios \
  C:/msys64/mingw64/include/c++/12.2.0/iosfwd \
@@ -96,6 +97,9 @@ CMakeFiles/backtester.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/12.2.0/ext/alloc_traits.h \
  C:/msys64/mingw64/include/c++/12.2.0/bits/alloc_traits.h \
  C:/msys64/mingw64/include/c++/12.2.0/bits/stl_construct.h \
+ C:/msys64/mingw64/include/c++/12.2.0/string_view \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/functional_hash.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/string_view.tcc \
  C:/msys64/mingw64/include/c++/12.2.0/ext/string_conversions.h \
  C:/msys64/mingw64/include/c++/12.2.0/cstdlib \
  C:/msys64/mingw64/include/stdlib.h \
@@ -107,7 +111,6 @@ CMakeFiles/backtester.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/12.2.0/cstdio \
  C:/msys64/mingw64/include/c++/12.2.0/cerrno \
  C:/msys64/mingw64/include/c++/12.2.0/bits/charconv.h \
- C:/msys64/mingw64/include/c++/12.2.0/bits/functional_hash.h \
  C:/msys64/mingw64/include/c++/12.2.0/bits/basic_string.tcc \
  C:/msys64/mingw64/include/c++/12.2.0/bits/locale_classes.tcc \
  C:/msys64/mingw64/include/c++/12.2.0/system_error \
@@ -128,25 +131,38 @@ CMakeFiles/backtester.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/12.2.0/istream \
  C:/msys64/mingw64/include/c++/12.2.0/bits/istream.tcc \
  C:/Users/simor/PROGRA~1/BACKTE~1/libs/A/include/A/A.h \
- C:/Users/simor/PROGRA~1/BACKTE~1/src/data/Data.hpp \
+ C:/Users/simor/PROGRA~1/BACKTE~1/src/data/CSVRow.hpp \
+ C:/msys64/mingw64/include/c++/12.2.0/fstream \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/codecvt.h \
+ C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/msys64/mingw64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++io.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/fstream.tcc \
+ C:/msys64/mingw64/include/c++/12.2.0/iterator \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/stream_iterator.h \
+ C:/msys64/mingw64/include/c++/12.2.0/sstream \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/sstream.tcc \
+ C:/msys64/mingw64/include/c++/12.2.0/vector \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/stl_uninitialized.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/stl_vector.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/stl_bvector.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/vector.tcc \
  C:/Users/simor/PROGRA~1/BACKTE~1/src/data/DataHandler.hpp \
  C:/Users/simor/PROGRA~1/BACKTE~1/src/event/Event.hpp \
  C:/msys64/mingw64/include/c++/12.2.0/queue \
  C:/msys64/mingw64/include/c++/12.2.0/deque \
- C:/msys64/mingw64/include/c++/12.2.0/bits/stl_uninitialized.h \
  C:/msys64/mingw64/include/c++/12.2.0/bits/stl_deque.h \
  C:/msys64/mingw64/include/c++/12.2.0/bits/deque.tcc \
- C:/msys64/mingw64/include/c++/12.2.0/vector \
- C:/msys64/mingw64/include/c++/12.2.0/bits/stl_vector.h \
- C:/msys64/mingw64/include/c++/12.2.0/bits/stl_bvector.h \
- C:/msys64/mingw64/include/c++/12.2.0/bits/vector.tcc \
  C:/msys64/mingw64/include/c++/12.2.0/bits/stl_heap.h \
  C:/msys64/mingw64/include/c++/12.2.0/bits/stl_queue.h \
  C:/msys64/mingw64/include/c++/12.2.0/bits/uses_allocator.h \
  C:/msys64/mingw64/include/c++/12.2.0/map \
  C:/msys64/mingw64/include/c++/12.2.0/bits/stl_tree.h \
  C:/msys64/mingw64/include/c++/12.2.0/ext/aligned_buffer.h \
+ C:/msys64/mingw64/include/c++/12.2.0/bits/node_handle.h \
  C:/msys64/mingw64/include/c++/12.2.0/bits/stl_map.h \
  C:/msys64/mingw64/include/c++/12.2.0/tuple \
  C:/msys64/mingw64/include/c++/12.2.0/bits/stl_multimap.h \
- C:/msys64/mingw64/include/c++/12.2.0/bits/erase_if.h
+ C:/msys64/mingw64/include/c++/12.2.0/bits/erase_if.h \
+ C:/Users/simor/PROGRA~1/BACKTE~1/src/data/Date.hpp \
+ C:/Users/simor/PROGRA~1/BACKTE~1/src/data/sampleHandlers/YahooFinanceCSV/OHLCAVData.hpp \
+ C:/Users/simor/PROGRA~1/BACKTE~1/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.hpp

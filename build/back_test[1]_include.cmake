@@ -1,0 +1,5 @@
+if(EXISTS "C:/Users/simor/Programming Files/backtester/build/back_test[1]_tests.cmake")
+  include("C:/Users/simor/Programming Files/backtester/build/back_test[1]_tests.cmake")
+else()
+  add_test(back_test_NOT_BUILT back_test_NOT_BUILT)
+endif()

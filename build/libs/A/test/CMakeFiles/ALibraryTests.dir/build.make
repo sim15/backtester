@@ -73,15 +73,15 @@ libs/A/test/CMakeFiles/ALibraryTests.dir/ATests.cpp.obj: libs/A/test/CMakeFiles/
 libs/A/test/CMakeFiles/ALibraryTests.dir/ATests.cpp.obj: C:/Users/simor/Programming\ Files/backtester/libs/A/test/ATests.cpp
 libs/A/test/CMakeFiles/ALibraryTests.dir/ATests.cpp.obj: libs/A/test/CMakeFiles/ALibraryTests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object libs/A/test/CMakeFiles/ALibraryTests.dir/ATests.cpp.obj"
-	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A\test && C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT libs/A/test/CMakeFiles/ALibraryTests.dir/ATests.cpp.obj -MF CMakeFiles\ALibraryTests.dir\ATests.cpp.obj.d -o CMakeFiles\ALibraryTests.dir\ATests.cpp.obj -c "C:\Users\simor\Programming Files\backtester\libs\A\test\ATests.cpp"
+	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A\test && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT libs/A/test/CMakeFiles/ALibraryTests.dir/ATests.cpp.obj -MF CMakeFiles\ALibraryTests.dir\ATests.cpp.obj.d -o CMakeFiles\ALibraryTests.dir\ATests.cpp.obj -c "C:\Users\simor\Programming Files\backtester\libs\A\test\ATests.cpp"
 
 libs/A/test/CMakeFiles/ALibraryTests.dir/ATests.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ALibraryTests.dir/ATests.cpp.i"
-	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A\test && C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\libs\A\test\ATests.cpp" > CMakeFiles\ALibraryTests.dir\ATests.cpp.i
+	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A\test && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\libs\A\test\ATests.cpp" > CMakeFiles\ALibraryTests.dir\ATests.cpp.i
 
 libs/A/test/CMakeFiles/ALibraryTests.dir/ATests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ALibraryTests.dir/ATests.cpp.s"
-	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A\test && C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\libs\A\test\ATests.cpp" -o CMakeFiles\ALibraryTests.dir\ATests.cpp.s
+	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A\test && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\libs\A\test\ATests.cpp" -o CMakeFiles\ALibraryTests.dir\ATests.cpp.s
 
 # Object files for target ALibraryTests
 ALibraryTests_OBJECTS = \

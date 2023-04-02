@@ -1,10 +1,13 @@
 C:/Users/simor/Programming Files/backtester/build/CMakeFiles/backtester.dir
+C:/Users/simor/Programming Files/backtester/build/CMakeFiles/back_test.dir
+C:/Users/simor/Programming Files/backtester/build/CMakeFiles/test.dir
 C:/Users/simor/Programming Files/backtester/build/CMakeFiles/edit_cache.dir
 C:/Users/simor/Programming Files/backtester/build/CMakeFiles/rebuild_cache.dir
 C:/Users/simor/Programming Files/backtester/build/CMakeFiles/list_install_components.dir
 C:/Users/simor/Programming Files/backtester/build/CMakeFiles/install.dir
 C:/Users/simor/Programming Files/backtester/build/CMakeFiles/install/local.dir
 C:/Users/simor/Programming Files/backtester/build/CMakeFiles/install/strip.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/CMakeFiles/test.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/CMakeFiles/edit_cache.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/CMakeFiles/rebuild_cache.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/CMakeFiles/list_install_components.dir
@@ -13,6 +16,7 @@ C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/CMakeFi
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/CMakeFiles/install/strip.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlemock/CMakeFiles/gmock.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlemock/CMakeFiles/test.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlemock/CMakeFiles/edit_cache.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlemock/CMakeFiles/rebuild_cache.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlemock/CMakeFiles/list_install_components.dir
@@ -21,6 +25,7 @@ C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlem
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlemock/CMakeFiles/install/strip.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googletest/CMakeFiles/gtest.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googletest/CMakeFiles/test.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googletest/CMakeFiles/edit_cache.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googletest/CMakeFiles/rebuild_cache.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googletest/CMakeFiles/list_install_components.dir
@@ -28,6 +33,7 @@ C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlet
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googletest/CMakeFiles/install/local.dir
 C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googletest/CMakeFiles/install/strip.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/CMakeFiles/A.dir
+C:/Users/simor/Programming Files/backtester/build/libs/A/CMakeFiles/test.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/CMakeFiles/edit_cache.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/CMakeFiles/rebuild_cache.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/CMakeFiles/list_install_components.dir
@@ -35,6 +41,7 @@ C:/Users/simor/Programming Files/backtester/build/libs/A/CMakeFiles/install.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/CMakeFiles/install/local.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/CMakeFiles/install/strip.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/test/CMakeFiles/ALibraryTests.dir
+C:/Users/simor/Programming Files/backtester/build/libs/A/test/CMakeFiles/test.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/test/CMakeFiles/edit_cache.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/test/CMakeFiles/rebuild_cache.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/test/CMakeFiles/list_install_components.dir

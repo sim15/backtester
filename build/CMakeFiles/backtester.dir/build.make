@@ -73,47 +73,81 @@ CMakeFiles/backtester.dir/src/event/Event.cpp.obj: CMakeFiles/backtester.dir/inc
 CMakeFiles/backtester.dir/src/event/Event.cpp.obj: C:/Users/simor/Programming\ Files/backtester/src/event/Event.cpp
 CMakeFiles/backtester.dir/src/event/Event.cpp.obj: CMakeFiles/backtester.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/backtester.dir/src/event/Event.cpp.obj"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backtester.dir/src/event/Event.cpp.obj -MF CMakeFiles\backtester.dir\src\event\Event.cpp.obj.d -o CMakeFiles\backtester.dir\src\event\Event.cpp.obj -c "C:\Users\simor\Programming Files\backtester\src\event\Event.cpp"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backtester.dir/src/event/Event.cpp.obj -MF CMakeFiles\backtester.dir\src\event\Event.cpp.obj.d -o CMakeFiles\backtester.dir\src\event\Event.cpp.obj -c "C:\Users\simor\Programming Files\backtester\src\event\Event.cpp"
 
 CMakeFiles/backtester.dir/src/event/Event.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backtester.dir/src/event/Event.cpp.i"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\src\event\Event.cpp" > CMakeFiles\backtester.dir\src\event\Event.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\src\event\Event.cpp" > CMakeFiles\backtester.dir\src\event\Event.cpp.i
 
 CMakeFiles/backtester.dir/src/event/Event.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backtester.dir/src/event/Event.cpp.s"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\src\event\Event.cpp" -o CMakeFiles\backtester.dir\src\event\Event.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\src\event\Event.cpp" -o CMakeFiles\backtester.dir\src\event\Event.cpp.s
+
+CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj: CMakeFiles/backtester.dir/flags.make
+CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj: CMakeFiles/backtester.dir/includes_CXX.rsp
+CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj: C:/Users/simor/Programming\ Files/backtester/src/data/DataHandler.cpp
+CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj: CMakeFiles/backtester.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj -MF CMakeFiles\backtester.dir\src\data\DataHandler.cpp.obj.d -o CMakeFiles\backtester.dir\src\data\DataHandler.cpp.obj -c "C:\Users\simor\Programming Files\backtester\src\data\DataHandler.cpp"
+
+CMakeFiles/backtester.dir/src/data/DataHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backtester.dir/src/data/DataHandler.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\src\data\DataHandler.cpp" > CMakeFiles\backtester.dir\src\data\DataHandler.cpp.i
+
+CMakeFiles/backtester.dir/src/data/DataHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backtester.dir/src/data/DataHandler.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\src\data\DataHandler.cpp" -o CMakeFiles\backtester.dir\src\data\DataHandler.cpp.s
+
+CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj: CMakeFiles/backtester.dir/flags.make
+CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj: CMakeFiles/backtester.dir/includes_CXX.rsp
+CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj: C:/Users/simor/Programming\ Files/backtester/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp
+CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj: CMakeFiles/backtester.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj -MF CMakeFiles\backtester.dir\src\data\sampleHandlers\YahooFinanceCSV\YahooFinanceCSVHandler.cpp.obj.d -o CMakeFiles\backtester.dir\src\data\sampleHandlers\YahooFinanceCSV\YahooFinanceCSVHandler.cpp.obj -c "C:\Users\simor\Programming Files\backtester\src\data\sampleHandlers\YahooFinanceCSV\YahooFinanceCSVHandler.cpp"
+
+CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\src\data\sampleHandlers\YahooFinanceCSV\YahooFinanceCSVHandler.cpp" > CMakeFiles\backtester.dir\src\data\sampleHandlers\YahooFinanceCSV\YahooFinanceCSVHandler.cpp.i
+
+CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\src\data\sampleHandlers\YahooFinanceCSV\YahooFinanceCSVHandler.cpp" -o CMakeFiles\backtester.dir\src\data\sampleHandlers\YahooFinanceCSV\YahooFinanceCSVHandler.cpp.s
 
 CMakeFiles/backtester.dir/src/main.cpp.obj: CMakeFiles/backtester.dir/flags.make
 CMakeFiles/backtester.dir/src/main.cpp.obj: CMakeFiles/backtester.dir/includes_CXX.rsp
 CMakeFiles/backtester.dir/src/main.cpp.obj: C:/Users/simor/Programming\ Files/backtester/src/main.cpp
 CMakeFiles/backtester.dir/src/main.cpp.obj: CMakeFiles/backtester.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/backtester.dir/src/main.cpp.obj"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backtester.dir/src/main.cpp.obj -MF CMakeFiles\backtester.dir\src\main.cpp.obj.d -o CMakeFiles\backtester.dir\src\main.cpp.obj -c "C:\Users\simor\Programming Files\backtester\src\main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/backtester.dir/src/main.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backtester.dir/src/main.cpp.obj -MF CMakeFiles\backtester.dir\src\main.cpp.obj.d -o CMakeFiles\backtester.dir\src\main.cpp.obj -c "C:\Users\simor\Programming Files\backtester\src\main.cpp"
 
 CMakeFiles/backtester.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/backtester.dir/src/main.cpp.i"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\src\main.cpp" > CMakeFiles\backtester.dir\src\main.cpp.i
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\src\main.cpp" > CMakeFiles\backtester.dir\src\main.cpp.i
 
 CMakeFiles/backtester.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/backtester.dir/src/main.cpp.s"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\src\main.cpp" -o CMakeFiles\backtester.dir\src\main.cpp.s
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\src\main.cpp" -o CMakeFiles\backtester.dir\src\main.cpp.s
 
 # Object files for target backtester
 backtester_OBJECTS = \
 "CMakeFiles/backtester.dir/src/event/Event.cpp.obj" \
+"CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj" \
+"CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj" \
 "CMakeFiles/backtester.dir/src/main.cpp.obj"
 
 # External object files for target backtester
 backtester_EXTERNAL_OBJECTS =
 
 backtester.exe: CMakeFiles/backtester.dir/src/event/Event.cpp.obj
+backtester.exe: CMakeFiles/backtester.dir/src/data/DataHandler.cpp.obj
+backtester.exe: CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj
 backtester.exe: CMakeFiles/backtester.dir/src/main.cpp.obj
 backtester.exe: CMakeFiles/backtester.dir/build.make
 backtester.exe: libs/A/libA.a
 backtester.exe: CMakeFiles/backtester.dir/linkLibs.rsp
 backtester.exe: CMakeFiles/backtester.dir/objects1.rsp
 backtester.exe: CMakeFiles/backtester.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable backtester.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable backtester.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\backtester.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

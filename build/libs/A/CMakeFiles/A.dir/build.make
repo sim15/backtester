@@ -73,15 +73,15 @@ libs/A/CMakeFiles/A.dir/src/A.cpp.obj: libs/A/CMakeFiles/A.dir/includes_CXX.rsp
 libs/A/CMakeFiles/A.dir/src/A.cpp.obj: C:/Users/simor/Programming\ Files/backtester/libs/A/src/A.cpp
 libs/A/CMakeFiles/A.dir/src/A.cpp.obj: libs/A/CMakeFiles/A.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object libs/A/CMakeFiles/A.dir/src/A.cpp.obj"
-	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A && C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT libs/A/CMakeFiles/A.dir/src/A.cpp.obj -MF CMakeFiles\A.dir\src\A.cpp.obj.d -o CMakeFiles\A.dir\src\A.cpp.obj -c "C:\Users\simor\Programming Files\backtester\libs\A\src\A.cpp"
+	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT libs/A/CMakeFiles/A.dir/src/A.cpp.obj -MF CMakeFiles\A.dir\src\A.cpp.obj.d -o CMakeFiles\A.dir\src\A.cpp.obj -c "C:\Users\simor\Programming Files\backtester\libs\A\src\A.cpp"
 
 libs/A/CMakeFiles/A.dir/src/A.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/A.dir/src/A.cpp.i"
-	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A && C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\libs\A\src\A.cpp" > CMakeFiles\A.dir\src\A.cpp.i
+	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\libs\A\src\A.cpp" > CMakeFiles\A.dir\src\A.cpp.i
 
 libs/A/CMakeFiles/A.dir/src/A.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/A.dir/src/A.cpp.s"
-	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A && C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\libs\A\src\A.cpp" -o CMakeFiles\A.dir\src\A.cpp.s
+	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\libs\A && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\libs\A\src\A.cpp" -o CMakeFiles\A.dir\src\A.cpp.s
 
 # Object files for target A
 A_OBJECTS = \

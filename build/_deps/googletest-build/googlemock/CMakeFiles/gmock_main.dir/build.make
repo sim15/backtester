@@ -73,15 +73,15 @@ _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.ob
 _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj: _deps/googletest-src/googlemock/src/gmock_main.cc
 _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj: _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj"
-	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\_deps\GOOGLE~3\GOOGLE~1 && C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj -MF CMakeFiles\gmock_main.dir\src\gmock_main.cc.obj.d -o CMakeFiles\gmock_main.dir\src\gmock_main.cc.obj -c "C:\Users\simor\Programming Files\backtester\build\_deps\googletest-src\googlemock\src\gmock_main.cc"
+	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\_deps\GOOGLE~3\GOOGLE~1 && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj -MF CMakeFiles\gmock_main.dir\src\gmock_main.cc.obj.d -o CMakeFiles\gmock_main.dir\src\gmock_main.cc.obj -c "C:\Users\simor\Programming Files\backtester\build\_deps\googletest-src\googlemock\src\gmock_main.cc"
 
 _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gmock_main.dir/src/gmock_main.cc.i"
-	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\_deps\GOOGLE~3\GOOGLE~1 && C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\build\_deps\googletest-src\googlemock\src\gmock_main.cc" > CMakeFiles\gmock_main.dir\src\gmock_main.cc.i
+	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\_deps\GOOGLE~3\GOOGLE~1 && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\build\_deps\googletest-src\googlemock\src\gmock_main.cc" > CMakeFiles\gmock_main.dir\src\gmock_main.cc.i
 
 _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gmock_main.dir/src/gmock_main.cc.s"
-	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\_deps\GOOGLE~3\GOOGLE~1 && C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\build\_deps\googletest-src\googlemock\src\gmock_main.cc" -o CMakeFiles\gmock_main.dir\src\gmock_main.cc.s
+	cd /d C:\Users\simor\PROGRA~1\BACKTE~1\build\_deps\GOOGLE~3\GOOGLE~1 && C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\build\_deps\googletest-src\googlemock\src\gmock_main.cc" -o CMakeFiles\gmock_main.dir\src\gmock_main.cc.s
 
 # Object files for target gmock_main
 gmock_main_OBJECTS = \
