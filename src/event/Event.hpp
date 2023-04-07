@@ -6,14 +6,9 @@
 #include <iostream>
 #include <queue>
 
-class Event {
-
-public:
-  Event(std::string eventType);
-
-  std::string getType() const;
-
-private:
+struct Event {
+  Event(std::string eventType) : type(eventType){};
+  virtual void printEvent() = 0;
   std::string type;
 };
 

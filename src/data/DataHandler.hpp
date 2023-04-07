@@ -7,6 +7,7 @@
 #include <event/Event.hpp>
 #include <iostream>
 #include <map>
+#include <memory>
 #include <queue>
 #include <string>
 #include <vector>
@@ -14,7 +15,7 @@
 template <class Data> class DataHandler {
 
 public:
-  DataHandler(std::queue<Event> *eventQueue);
+  DataHandler(std::queue<std::shared_ptr<Event>> *eventQueue);
   // DataHandler<Data>();
   //   ~DataHandler();
 
@@ -24,17 +25,23 @@ public:
   Data get_latest_bar(std::string symbol);
   //   Data get_latest_bar_time(string symbol); // ? not necessary for now?
 
+  int getTimeIndex() const { return numDataPoints; };
+  // TODO: a datetime variable virtual function to be implemented by handlers?
+
   // updates internal market data points and adds market event to event queue
   // (called during a single heartbeat)
   virtual void update_bars();
 
+  int getNumDataPoints() { return numDataPoints; };
+
 protected:
-  std::queue<Event> *events;
+  std::queue<std::shared_ptr<Event>> *events;
   std::map<std::string, std::vector<Data>> historical;
+  int numDataPoints;
 };
 
 template <class Data>
-DataHandler<Data>::DataHandler(std::queue<Event> *eventQueue) {
+DataHandler<Data>::DataHandler(std::queue<std::shared_ptr<Event>> *eventQueue) {
   events = eventQueue;
 }
 

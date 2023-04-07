@@ -8,16 +8,18 @@
 #include <iostream>
 #include <queue>
 
-class Strategy {
+template <class Data> class Strategy {
 
 public:
-  Strategy(queue<Event> *eventQueue, DataHandler data);
+  Strategy(std::queue<std::shared_ptr<Event>> *eventQueue,
+           DataHandler<Data> dataProcessor)
+      : events(eventQueue), data(dataProcessor){};
 
-  void calculate_signals();
+  virtual void calculate_signals();
 
 private:
-  queue<Event> *events;
-  DataHandler data;
+  std::queue<std::shared_ptr<Event>> *events;
+  DataHandler<Data> data;
 };
 
 #endif

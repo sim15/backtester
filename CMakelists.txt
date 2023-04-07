@@ -54,16 +54,19 @@ FetchContent_MakeAvailable(googletest)
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
 set(SOURCE_FILES
-    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/Event.cpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/Event.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/MarketEvent.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/FillEvent.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/OrderEvent.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/SignalEvent.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/CSVRow.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/Date.hpp
-    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/Data.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/DataHandler.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/DataHandler.cpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/OHLCAVData.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/ordermanagement/portfolio/Portfolio.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/main.cpp
 )
 

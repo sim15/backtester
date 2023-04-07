@@ -10,6 +10,7 @@ public:
     month_ = month;
     day_ = day;
   }
+  Date(){};
 
   int year() const { return year_; }
   int month() const { return month_; }

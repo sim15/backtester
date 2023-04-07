@@ -4,8 +4,10 @@
 // #include <data/Data.hpp>
 #include <data/DataHandler.hpp>
 #include <data/Date.hpp>
+#include <data/sampleHandlers/YahooFinanceCSV/OHLCAVData.hpp>
 #include <event/Event.hpp>
 #include <iostream>
+#include <memory>
 
 Date parseDateString(std::string date);
 
@@ -13,7 +15,7 @@ class YahooFinanceCSVHandler : public DataHandler<OHLCAVData> {
 public:
   YahooFinanceCSVHandler(int numSymbols, std::string *symbolFiles,
                          std::string *symbolLabels,
-                         std::queue<Event> *eventQueue);
+                         std::queue<std::shared_ptr<Event>> *eventQueue);
   // YahooFinanceCSVHandler();
   void update_bars() override;
   void empty_read();
@@ -22,7 +24,6 @@ public:
 
 private:
   std::map<std::string, std::ifstream> dataFiles;
-  int linesRead;
 };
 
 #endif

@@ -1,39 +1,60 @@
 #include <ctime>
 #include <data/CSVRow.hpp>
 #include <data/Date.hpp>
-#include <data/sampleHandlers/YahooFinanceCSV/OHLCAVData.hpp>
 #include <data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.hpp>
 #include <event/Event.hpp>
+#include <event/MarketEvent.hpp>
 #include <iomanip>
 #include <iostream>
+#include <memory>
+#include <queue>
 #include <sstream>
 #include <string>
 
-// YahooFinanceCSVHandler::~YahooFinanceCSVHandler() {
-//   delete dataFiles;
-//   delete symbols;
-// }
-
+/**
+ * @brief parse a date (e.g., string "1980-12-12") and convert to a Date object
+ *
+ * @param date
+ * @return Date
+ */
 Date parseDateString(std::string date) {
-  // TODO: add format checking
-  std::string date_time_format = "%Y/%m/%d";
-  std::istringstream ss{date};
-  tm dt;
+  // std::string date_time_format = "%Y-%m-%d";
+  // std::istringstream ss{date};
+  // tm dt;
 
-  ss >> std::get_time(&dt, date_time_format.c_str());
+  // ss >> std::get_time(&dt, date_time_format.c_str());
 
-  time_t final_time;
+  // time_t final_time;
 
-  final_time = mktime(&dt);
-  tm *ltm = localtime(&final_time);
+  // final_time = mktime(&dt);
+  // tm *ltm = localtime(&final_time);
 
-  return Date(1900 + ltm->tm_year, 1 + ltm->tm_mon, ltm->tm_mday);
+  // int a = 1900 + ltm->tm_year;
+  // int b = 1 + ltm->tm_mon;
+  // int c = ltm->tm_mday;
+  //! TODO: add format checking
+
+  int year;
+  int month;
+  int day;
+  int result = sscanf(date.c_str(), "%d-%d-%d", &year, &month, &day);
+
+  return Date(year, month, day);
 }
 
-YahooFinanceCSVHandler::YahooFinanceCSVHandler(int numSymbols,
-                                               std::string *symbolFiles,
-                                               std::string *symbolLabels,
-                                               std::queue<Event> *eventQueue)
+/**
+ * @brief Construct a new Yahoo Finance C S V Handler:: Yahoo Finance CSV
+ * Handler object
+ *
+ * @param numSymbols number of symbols/files to be read
+ * @param symbolFiles global path to symbol data file (csv) (e.g.,
+ * 'C:/.../AAPL.csv')
+ * @param symbolLabels label for each symbol (e.g., AAPL)
+ * @param eventQueue pointer to main event queue
+ */
+YahooFinanceCSVHandler::YahooFinanceCSVHandler(
+    int numSymbols, std::string *symbolFiles, std::string *symbolLabels,
+    std::queue<std::shared_ptr<Event>> *eventQueue)
     : DataHandler<OHLCAVData>(eventQueue) {
 
   for (int i = 0; i < numSymbols; i++) {
@@ -41,9 +62,13 @@ YahooFinanceCSVHandler::YahooFinanceCSVHandler(int numSymbols,
     historical[symbolLabels[i]].clear();
   }
 
-  linesRead = 0;
+  numDataPoints = 0;
 }
 
+/**
+ * @brief read a line from each symbol file (do nothing; move to next line)
+ *
+ */
 void YahooFinanceCSVHandler::empty_read() {
 
   for (auto const &[symbol, path] : dataFiles) {
@@ -54,13 +79,19 @@ void YahooFinanceCSVHandler::empty_read() {
     CSVRow row;
 
     if (dataFiles[symbol] >> row) {
-      linesRead++;
+      numDataPoints++;
     } else
       throw std::out_of_range("no new data read for at least one data stream");
   }
 }
 
+/**
+ * @brief read one line from all symbol data files. store read ticker data and
+ * add a market event if new data was read
+ *
+ */
 void YahooFinanceCSVHandler::update_bars() {
+  // TODO: check that dates in data are the same
 
   for (auto const &[symbol, path] : dataFiles) {
     if (!dataFiles[symbol])
@@ -84,7 +115,9 @@ void YahooFinanceCSVHandler::update_bars() {
                         stoi(low), stoi(close), stoi(adjClose), stoi(volume));
 
       historical[symbol].push_back(ticker);
-      linesRead++;
+      numDataPoints++;
+
+      (*events).push(std::make_shared<MarketEvent>());
     } else
       throw std::out_of_range("no new data read for at least one data stream");
   }
