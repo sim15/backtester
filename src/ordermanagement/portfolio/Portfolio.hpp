@@ -25,7 +25,7 @@ public:
     currentPositions = constructCurrentPositions();
   };
 
-  // std::vector<std::map<std::string, int>> constructAllPositions();
+  // std::vector<std::map<std::string, int>>  ();
   // std::vector<std::map<std::string, int>> constructAllHoldings();
   std::map<std::string, int> constructCurrentHoldings();
   std::map<std::string, int> constructCurrentPositions();
@@ -62,12 +62,13 @@ private:
 // ==========================================================
 
 // initial instantaneous holdings
+// TODO: convert to a portfolio state struct
 template <class Data>
 std::map<std::string, int> Portfolio<Data>::constructCurrentHoldings() {
   std::map<std::string, int> holdings;
-  for (int i = 0; i < numSymbols; i++) {
+  for (int i = 0; i < numSymbols; i++)
     holdings[symbolList[i]] = 0;
-  }
+
   holdings["cash"] = initialCapital;
   holdings["commission"] = 0;
   holdings["total"] = initialCapital;
@@ -87,27 +88,29 @@ std::map<std::string, int> Portfolio<Data>::constructCurrentPositions() {
 template <class Data> void Portfolio<Data>::updateTimeIndex() {
   // fetch all data
   std::map<std::string, Data> data;
-  for (int i = 0; i < numSymbols; i++)
-    data[symbolList[numSymbols]] = bars->get_latest_bar(symbolList[numSymbols]);
-
+  for (int i = 0; i < numSymbols; i++) {
+    std::string symbol = symbolList[i];
+    data[symbol] = bars->get_latest_bar(symbol);
+  }
+  // TODO: setup time indices in data handler
   int curTimeIndex = bars->getTimeIndex();
 
   // positions
   std::map<std::string, int> positions(currentPositions);
-  positions['timeIndex'] = curTimeIndex;
+  positions["timeIndex"] = curTimeIndex;
   allPositions.push_back(currentPositions);
 
   // holdings
   std::map<std::string, int> holdings(currentHoldings);
-  holdings['timeIndex'] = curTimeIndex;
-  holdings['total'] = holdings['cash'];
+  holdings["timeIndex"] = curTimeIndex;
+  holdings["total"] = holdings["cash"];
 
   // update each holding based on market price
   for (int i = 0; i < numSymbols; i++) {
     int marketValue = compute_market_value(currentPositions[symbolList[i]],
                                            data[symbolList[i]]);
     holdings[symbolList[i]] = marketValue;
-    holdings['total'] += marketValue;
+    holdings["total"] += marketValue;
   }
   allHoldings.push_back(holdings);
 }
@@ -120,7 +123,7 @@ void Portfolio<Data>::updatePositionsFromFill(FillEvent fill) {
   if (fill.direction == "Sell")
     fillDir = -1;
 
-  currentPositions += fillDir * fill.quantity;
+  currentPositions[fill.symbol] += fillDir * fill.quantity;
 }
 
 // The corresponding update_holdings_from_fill is similar to the above method
@@ -144,7 +147,9 @@ void Portfolio<Data>::updateHoldingsFromFill(FillEvent fill) {
   if (fill.direction == "Sell")
     fillDir = -1;
 
-  int marketValue = compute_market_value(fill.quantity, data[fill.symbol]);
+  Data curSymbolData = bars->get_latest_bar(fill.symbol);
+
+  int marketValue = compute_market_value(fill.quantity, curSymbolData);
   int cost = fillDir * marketValue;
   currentHoldings[fill.symbol] += cost;
   currentHoldings["commission"] += fill.commission;

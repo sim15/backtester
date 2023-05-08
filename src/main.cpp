@@ -6,6 +6,8 @@
 #include <data/Date.hpp>
 #include <data/sampleHandlers/YahooFinanceCSV/OHLCAVData.hpp>
 #include <data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.hpp>
+#include <demo_setup/BasicOHLCAVPortfolio.hpp>
+#include <demo_setup/NaiveStrategy.hpp>
 #include <event/Event.hpp>
 #include <memory>
 #include <queue>
@@ -16,9 +18,9 @@ int main() {
 
   std::string *files = new std::string[2]{
       "C:/Users/simor/Programming "
-      "Files/backtester/build/example_datafeed_daily/AAPL.csv",
+      "Files/backtester/src/example_datafeed_daily/AAPL.csv",
       "C:/Users/simor/Programming "
-      "Files/backtester/build/example_datafeed_daily/BABA.csv"};
+      "Files/backtester/src/example_datafeed_daily/BABA.csv"};
 
   std::string *symbols = new std::string[2]{"AAPL", "BABA"};
 
@@ -26,8 +28,12 @@ int main() {
   YahooFinanceCSVHandler yahooRead(2, files, symbols, &eventQueue);
   // ignore header row
   yahooRead.empty_read();
+  BasicOHLCAVPortfolio portfolio(2, &yahooRead, &eventQueue, symbols, 0, 1000);
 
   // a single heart beat of the system
+
+  // while (true) {
+  // TODO: add exit backtest condition in datahandler
 
   // fetch bars (data) -> iterate over event queue until system fully up-to-date
   yahooRead.update_bars();
@@ -38,7 +44,7 @@ int main() {
 
     if (curEvent->type == "Market") {
       // strategy.calculate_signals(event)
-      // portfolio.update_timeindex(event)
+      portfolio.updateTimeIndex();
     } else if (curEvent->type == "Signal") {
       // portfolio.update_signal(event)
     } else if (curEvent->type == "Order") {
@@ -47,6 +53,8 @@ int main() {
       // portfolio.update_fill(event)
     }
   }
+
+  // }
 
   return 0;
 }

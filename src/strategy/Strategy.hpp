@@ -12,14 +12,14 @@ template <class Data> class Strategy {
 
 public:
   Strategy(std::queue<std::shared_ptr<Event>> *eventQueue,
-           DataHandler<Data> dataProcessor)
-      : events(eventQueue), data(dataProcessor){};
+           DataHandler<Data> *data)
+      : events(eventQueue), bars(data){};
 
   virtual void calculate_signals();
 
 private:
   std::queue<std::shared_ptr<Event>> *events;
-  DataHandler<Data> data;
+  DataHandler<Data> *bars;
 };
 
 #endif

@@ -67,6 +67,7 @@ set(SOURCE_FILES
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/ordermanagement/portfolio/Portfolio.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/demo_setup/BasicOHLCAVPortfolio.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/main.cpp
 )
 

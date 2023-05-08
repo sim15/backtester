@@ -9,6 +9,7 @@ struct SignalEvent : Event {
               double strengthFactor)
       : Event("Signal"), strategyId(id), symbol(symb), datetime(timestamp),
         signalType(type), strength(strengthFactor){};
+
   void printEvent() override{};
 
   int strategyId; // The unique identifier for the strategy that generated the
