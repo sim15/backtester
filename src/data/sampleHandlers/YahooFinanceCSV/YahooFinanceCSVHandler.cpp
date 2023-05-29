@@ -18,22 +18,7 @@
  * @return Date
  */
 Date parseDateString(std::string date) {
-  // std::string date_time_format = "%Y-%m-%d";
-  // std::istringstream ss{date};
-  // tm dt;
-
-  // ss >> std::get_time(&dt, date_time_format.c_str());
-
-  // time_t final_time;
-
-  // final_time = mktime(&dt);
-  // tm *ltm = localtime(&final_time);
-
-  // int a = 1900 + ltm->tm_year;
-  // int b = 1 + ltm->tm_mon;
-  // int c = ltm->tm_mday;
   //! TODO: add format checking
-
   int year;
   int month;
   int day;
@@ -55,14 +40,10 @@ Date parseDateString(std::string date) {
 YahooFinanceCSVHandler::YahooFinanceCSVHandler(
     int numSymbols, std::string *symbolFiles, std::string *symbolLabels,
     std::queue<std::shared_ptr<Event>> *eventQueue)
-    : DataHandler<OHLCAVData>(eventQueue) {
+    : DataHandler<OHLCAVData, Date>(eventQueue) {
 
-  for (int i = 0; i < numSymbols; i++) {
+  for (int i = 0; i < numSymbols; i++)
     dataFiles.emplace(symbolLabels[i], symbolFiles[i]);
-    historical[symbolLabels[i]].clear();
-  }
-
-  numDataPoints = 0;
 }
 
 /**
@@ -78,31 +59,33 @@ void YahooFinanceCSVHandler::empty_read() {
 
     CSVRow row;
 
-    if (dataFiles[symbol] >> row) {
-      numDataPoints++;
-    } else
+    if (!(dataFiles[symbol] >> row))
       throw std::out_of_range("no new data read for at least one data stream");
   }
 }
 
 /**
  * @brief read one line from all symbol data files. store read ticker data and
- * add a market event if new data was read
- *
+ * add a market event to queue if new data was read;
+ * simulates NEW price data (no retroactive updates; each ticker must be for
+ * same day) allows missing data points but not misaligned dates on ticker
  */
 void YahooFinanceCSVHandler::update_bars() {
-  // TODO: check that dates in data are the same
+  // use first date in sheet as reference
+  bool flag_dateNotRecorded = true;
+  Date currentDate;
+  std::vector<std::string> toWriteSymbol;
+  std::vector<OHLCAVData> toWriteTicker;
 
   for (auto const &[symbol, path] : dataFiles) {
     if (!dataFiles[symbol])
       throw std::invalid_argument("symbol file path invalid; file not found");
 
     CSVRow row;
-
+    // try to read the csv row
     if (dataFiles[symbol] >> row) {
       // TODO: potentially unnecessary allocation
       // converting from string view to int
-
       std::string date(row[0]);
       std::string open(row[1]);
       std::string high(row[2]);
@@ -114,11 +97,37 @@ void YahooFinanceCSVHandler::update_bars() {
       OHLCAVData ticker(parseDateString(date), stoi(open), stoi(high),
                         stoi(low), stoi(close), stoi(adjClose), stoi(volume));
 
-      historical[symbol].push_back(ticker);
-      numDataPoints++;
+      // keep track of current time index
+      if (flag_dateNotRecorded) {
+        currentDate = ticker.date;
 
-      (*events).push(std::make_shared<MarketEvent>());
-    } else
-      throw std::out_of_range("no new data read for at least one data stream");
+        const Date *ok = getLatestTimeIndex();
+        // check date is fresh
+        if (!((getLatestTimeIndex() == NULL) ||
+              (*getLatestTimeIndex() < currentDate)))
+          throw std::runtime_error("Attempting to read stale data");
+
+        flag_dateNotRecorded = false;
+
+      }
+      // make sure all data is from the same point in time
+      else if (currentDate != ticker.date) {
+        throw std::runtime_error("Data rows not aligned; dates do not match");
+      }
+
+      // don't write data until all rows validates
+      toWriteSymbol.push_back(symbol);
+      toWriteTicker.push_back(ticker);
+    }
   }
+
+  // no rows read
+  if (flag_dateNotRecorded)
+    throw std::runtime_error("no new data read");
+
+  // data validated; write to handler
+  for (int i = 0; i < toWriteSymbol.size(); i++)
+    writeDataPoint(toWriteSymbol[i], toWriteTicker[i].date, toWriteTicker[i]);
+
+  (*events).push(std::make_shared<MarketEvent>());
 }

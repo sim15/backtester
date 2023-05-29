@@ -1,7 +1,6 @@
 #ifndef YAHOOFINANCECSVHANDLER_H
 #define YAHOOFINANCECSVHANDLER_H
 
-// #include <data/Data.hpp>
 #include <data/DataHandler.hpp>
 #include <data/Date.hpp>
 #include <data/sampleHandlers/YahooFinanceCSV/OHLCAVData.hpp>
@@ -11,15 +10,15 @@
 
 Date parseDateString(std::string date);
 
-class YahooFinanceCSVHandler : public DataHandler<OHLCAVData> {
+class YahooFinanceCSVHandler : public DataHandler<OHLCAVData, Date> {
 public:
   YahooFinanceCSVHandler(int numSymbols, std::string *symbolFiles,
                          std::string *symbolLabels,
                          std::queue<std::shared_ptr<Event>> *eventQueue);
   // YahooFinanceCSVHandler();
+
   void update_bars() override;
   void empty_read();
-  // OHLCAVData get_latest_bar() override;
   // ~YahooFinanceCSVHandler();
 
 private:

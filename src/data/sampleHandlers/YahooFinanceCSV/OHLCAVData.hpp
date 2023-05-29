@@ -6,7 +6,6 @@
 // Date,Open,High,Low,Close,Adj Close,Volume
 struct OHLCAVData {
 
-public:
   OHLCAVData(Date d, int open, int high, int low, int close, int adjClose,
              int vol)
       : date(d), open(open), high(high), low(low), close(close),

@@ -8,7 +8,7 @@
 
 struct Event {
   Event(std::string eventType) : type(eventType){};
-  virtual void printEvent() = 0;
+  // virtual void printEvent() = 0;
   std::string type;
 };
 

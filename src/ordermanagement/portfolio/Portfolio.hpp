@@ -9,74 +9,82 @@
 #include <event/OrderEvent.hpp>
 #include <event/SignalEvent.hpp>
 #include <map>
+#include <ordermanagement/portfolio/PortfolioState.hpp>
 #include <vector>
 
-template <class Data> class Portfolio {
+template <class Data, class IndexTypeComparable> class Portfolio {
 
 public:
-  Portfolio(int numSymbols, DataHandler<Data> *bars,
+  Portfolio(int numSymbols, DataHandler<Data, IndexTypeComparable> *bars,
             std::queue<std::shared_ptr<Event>> *events, std::string *symbols,
-            int startDate, int initialCapital)
+            int startIndex, int initialCapital)
       : numSymbols(numSymbols), bars(bars), events(events),
-        startDate(startDate), symbolList(symbols),
+        startIndex(startIndex), symbolList(symbols),
         initialCapital(initialCapital) {
 
-    currentHoldings = constructCurrentHoldings();
-    currentPositions = constructCurrentPositions();
+    curState =
+        PortfolioState(constructEmptyHoldings(), constructEmptyPositions(),
+                       initialCapital, 0, initialCapital, startIndex);
   };
 
-  // std::vector<std::map<std::string, int>>  ();
-  // std::vector<std::map<std::string, int>> constructAllHoldings();
-  std::map<std::string, int> constructCurrentHoldings();
-  std::map<std::string, int> constructCurrentPositions();
+  std::map<std::string, int> constructEmptyHoldings();
+  std::map<std::string, int> constructEmptyPositions();
 
   void updateTimeIndex();
-  //   Adds a new record to the positions matrix for the current
-  // market data bar. This reflects the PREVIOUS bar, i.e. all
-  // current market data at this stage is known (OHLCV).
-  // Makes use of a MarketEvent from the events queue.
 
   void updatePositionsFromFill(FillEvent event);
   void updateHoldingsFromFill(FillEvent event);
   void updateFill(FillEvent event);
   void updateSignal(SignalEvent event);
 
-  virtual int compute_market_value(int position, Data priceData) = 0;
-  virtual OrderEvent generate_order(SignalEvent event) = 0;
+  virtual int compute_market_value(std::string symbol, int quantity) = 0;
+  virtual std::vector<OrderEvent> generate_orders(SignalEvent event) = 0;
+
+  std::string *getSymbols() const { return symbolList; };
+  int getNumSymbols() const { return numSymbols; };
+
+protected:
+  DataHandler<Data, IndexTypeComparable>
+      *bars; // The DataHandler object with current market data.
+  std::queue<std::shared_ptr<Event>> *events; // The Event Queue object.
 
 private:
-  DataHandler<Data> *bars; // The DataHandler object with current market data.
-  std::queue<std::shared_ptr<Event>> *events; // The Event Queue object.
   std::string *symbolList;
-  int startDate;      // The start date (bar) of the portfolio
+  int startIndex;     // The start date (bar) of the portfolio
   int initialCapital; // The starting capital in USD.
   int numSymbols;
 
-  std::vector<std::map<std::string, int>> allPositions;
-  std::vector<std::map<std::string, int>> allHoldings;
-
-  std::map<std::string, int> currentPositions;
-  std::map<std::string, int> currentHoldings;
+  PortfolioState curState; // current portfolio state
+  std::vector<PortfolioState> historicalStates;
 };
 
 // ==========================================================
 
-// initial instantaneous holdings
-// TODO: convert to a portfolio state struct
-template <class Data>
-std::map<std::string, int> Portfolio<Data>::constructCurrentHoldings() {
+/**
+ * @brief return default (all 0) empty holdings
+ *
+ * @tparam Data
+ * @return std::map<std::string, int>
+ */
+template <class Data, class IndexTypeComparable>
+std::map<std::string, int>
+Portfolio<Data, IndexTypeComparable>::constructEmptyHoldings() {
   std::map<std::string, int> holdings;
   for (int i = 0; i < numSymbols; i++)
     holdings[symbolList[i]] = 0;
 
-  holdings["cash"] = initialCapital;
-  holdings["commission"] = 0;
-  holdings["total"] = initialCapital;
   return holdings;
 }
 
-template <class Data>
-std::map<std::string, int> Portfolio<Data>::constructCurrentPositions() {
+/**
+ * @brief return default (all 0) empty positions
+ *
+ * @tparam Data
+ * @return std::map<std::string, int>
+ */
+template <class Data, class IndexTypeComparable>
+std::map<std::string, int>
+Portfolio<Data, IndexTypeComparable>::constructEmptyPositions() {
   std::map<std::string, int> positions;
   for (int i = 0; i < numSymbols; i++)
     positions[symbolList[i]] = 0;
@@ -84,87 +92,116 @@ std::map<std::string, int> Portfolio<Data>::constructCurrentPositions() {
   return positions;
 }
 
-// update time indices and add both positions and holdings to history
-template <class Data> void Portfolio<Data>::updateTimeIndex() {
+/**
+ * @brief stores current portfolio state in matrix and update time index.
+ * Reflects PREVIOUS bar, i.e. all current market data at this stage is known.
+ * does not actually modify current portfolio state, just recomputes value of
+ * holdings.
+ * @tparam Data
+ */
+template <class Data, class IndexTypeComparable>
+void Portfolio<Data, IndexTypeComparable>::updateTimeIndex() {
   // fetch all data
-  std::map<std::string, Data> data;
+  std::map<std::string, const Data *> data;
   for (int i = 0; i < numSymbols; i++) {
     std::string symbol = symbolList[i];
     data[symbol] = bars->get_latest_bar(symbol);
   }
-  // TODO: setup time indices in data handler
+  // get index of data
   int curTimeIndex = bars->getTimeIndex();
 
-  // positions
-  std::map<std::string, int> positions(currentPositions);
-  positions["timeIndex"] = curTimeIndex;
-  allPositions.push_back(currentPositions);
-
   // holdings
-  std::map<std::string, int> holdings(currentHoldings);
-  holdings["timeIndex"] = curTimeIndex;
-  holdings["total"] = holdings["cash"];
+  std::map<std::string, int> holdings(curState.holdings); // copy holdings
+  int newTotal = curState.cash;
 
-  // update each holding based on market price
+  // recalculate/update each holding based on market price
   for (int i = 0; i < numSymbols; i++) {
-    int marketValue = compute_market_value(currentPositions[symbolList[i]],
-                                           data[symbolList[i]]);
+    int marketValue =
+        compute_market_value(symbolList[i], curState.positions[symbolList[i]]);
     holdings[symbolList[i]] = marketValue;
-    holdings["total"] += marketValue;
+    newTotal += marketValue;
   }
-  allHoldings.push_back(holdings);
+
+  // TODO: change curTimeINdex to be Date and not int
+  PortfolioState valueState =
+      PortfolioState(holdings, curState.positions, curState.cash,
+                     curState.commission, newTotal, curTimeIndex);
+
+  historicalStates.push_back(valueState);
 }
 
-template <class Data>
-void Portfolio<Data>::updatePositionsFromFill(FillEvent fill) {
+/**
+ * @brief update positions from an executed market (fill) order
+ *
+ * @tparam Data
+ * @param fill
+ */
+template <class Data, class IndexTypeComparable>
+void Portfolio<Data, IndexTypeComparable>::updatePositionsFromFill(
+    FillEvent fill) {
   int fillDir = 0;
   if (fill.direction == "Buy")
     fillDir = 1;
   if (fill.direction == "Sell")
     fillDir = -1;
 
-  currentPositions[fill.symbol] += fillDir * fill.quantity;
+  curState.positions[fill.symbol] += fillDir * fill.quantity;
 }
 
 // The corresponding update_holdings_from_fill is similar to the above method
-// but updates the holdings values instead. In order to simulate the cost of a
-// fill, the following method does not use the cost associated from the
-// FillEvent. Why is this? Simply put, in a backtesting environment the fill
-// cost is actually unknown (the market impact and the depth of book are
-// unknown) and thus is must be estimated.
-// Thus the fill cost is set to the the "current market price", which is the
-// closing price of the last bar. The holdings for a particular symbol are then
-// set to be equal to the fill cost multiplied by the transacted quantity. For
-// most lower frequency trading strategies in liquid markets this is a
-// reasonable approximation, but at high frequency these issues will need to be
-// considered in a production backtest and live trading engine.
+// but updates the holdings values instead.
 
-template <class Data>
-void Portfolio<Data>::updateHoldingsFromFill(FillEvent fill) {
+/**
+ * @brief updates current holdings from a fill event.
+ *
+ * In order to simulate the cost of a
+ * fill, the following method does not use the cost associated from the
+ * FillEvent. Why is this? Simply put, in a backtesting environment the fill
+ * cost is actually unknown (the market impact and the depth of book are
+ * unknown) and thus is must be estimated.
+ * Thus the fill cost is set to the the "current market price", which is the
+ * closing price of the last bar. The holdings for a particular symbol are then
+ * set to be equal to the fill cost multiplied by the transacted quantity. For
+ * most lower frequency trading strategies in liquid markets this is a
+ * reasonable approximation, but at high frequency these issues will need to be
+ * considered in a production backtest and live trading engine.
+ * @tparam Data
+ * @param fill
+ */
+template <class Data, class IndexTypeComparable>
+void Portfolio<Data, IndexTypeComparable>::updateHoldingsFromFill(
+    FillEvent fill) {
   int fillDir = 0;
   if (fill.direction == "Buy")
     fillDir = 1;
   if (fill.direction == "Sell")
     fillDir = -1;
 
-  Data curSymbolData = bars->get_latest_bar(fill.symbol);
+  // current price data
+  Data *curSymbolData = bars->get_latest_bar(fill.symbol);
 
-  int marketValue = compute_market_value(fill.quantity, curSymbolData);
+  // estimate cost value
+  int marketValue = compute_market_value(fill.symbol, fill.quantity);
   int cost = fillDir * marketValue;
-  currentHoldings[fill.symbol] += cost;
-  currentHoldings["commission"] += fill.commission;
-  currentHoldings["cash"] -= (cost + fill.commission);
-  currentHoldings["total"] -= (cost + fill.commission);
+  // int cost = fill.fillCost; // ? let's estimate cost when adding fillevent
+
+  curState.holdings[fill.symbol] += cost;
+  curState.commission += fill.commission;
+  curState.cash -= (cost + fill.commission);
+  curState.total -= (cost + fill.commission);
 }
 
-template <class Data> void Portfolio<Data>::updateFill(FillEvent fill) {
+template <class Data, class IndexTypeComparable>
+void Portfolio<Data, IndexTypeComparable>::updateFill(FillEvent fill) {
   updatePositionsFromFill(fill);
   updateHoldingsFromFill(fill);
 }
 
-template <class Data> void Portfolio<Data>::updateSignal(SignalEvent event) {
-  OrderEvent order = generate_order(event);
-  (*events).push(std::make_shared<Event>(order));
+template <class Data, class IndexTypeComparable>
+void Portfolio<Data, IndexTypeComparable>::updateSignal(SignalEvent event) {
+  std::vector<OrderEvent> orders = generate_orders(event);
+  for (auto &order : orders)
+    (*events).push(std::make_shared<Event>(order));
 }
 
 #endif

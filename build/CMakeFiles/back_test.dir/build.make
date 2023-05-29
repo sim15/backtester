@@ -68,29 +68,29 @@ include CMakeFiles/back_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/back_test.dir/flags.make
 
-CMakeFiles/back_test.dir/test/back_test.cpp.obj: CMakeFiles/back_test.dir/flags.make
-CMakeFiles/back_test.dir/test/back_test.cpp.obj: CMakeFiles/back_test.dir/includes_CXX.rsp
-CMakeFiles/back_test.dir/test/back_test.cpp.obj: C:/Users/simor/Programming\ Files/backtester/test/back_test.cpp
-CMakeFiles/back_test.dir/test/back_test.cpp.obj: CMakeFiles/back_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/back_test.dir/test/back_test.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/back_test.dir/test/back_test.cpp.obj -MF CMakeFiles\back_test.dir\test\back_test.cpp.obj.d -o CMakeFiles\back_test.dir\test\back_test.cpp.obj -c "C:\Users\simor\Programming Files\backtester\test\back_test.cpp"
+CMakeFiles/back_test.dir/test/backtest_test.cpp.obj: CMakeFiles/back_test.dir/flags.make
+CMakeFiles/back_test.dir/test/backtest_test.cpp.obj: CMakeFiles/back_test.dir/includes_CXX.rsp
+CMakeFiles/back_test.dir/test/backtest_test.cpp.obj: C:/Users/simor/Programming\ Files/backtester/test/backtest_test.cpp
+CMakeFiles/back_test.dir/test/backtest_test.cpp.obj: CMakeFiles/back_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\simor\Programming Files\backtester\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/back_test.dir/test/backtest_test.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/back_test.dir/test/backtest_test.cpp.obj -MF CMakeFiles\back_test.dir\test\backtest_test.cpp.obj.d -o CMakeFiles\back_test.dir\test\backtest_test.cpp.obj -c "C:\Users\simor\Programming Files\backtester\test\backtest_test.cpp"
 
-CMakeFiles/back_test.dir/test/back_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/back_test.dir/test/back_test.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\test\back_test.cpp" > CMakeFiles\back_test.dir\test\back_test.cpp.i
+CMakeFiles/back_test.dir/test/backtest_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/back_test.dir/test/backtest_test.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\simor\Programming Files\backtester\test\backtest_test.cpp" > CMakeFiles\back_test.dir\test\backtest_test.cpp.i
 
-CMakeFiles/back_test.dir/test/back_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/back_test.dir/test/back_test.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\test\back_test.cpp" -o CMakeFiles\back_test.dir\test\back_test.cpp.s
+CMakeFiles/back_test.dir/test/backtest_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/back_test.dir/test/backtest_test.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\simor\Programming Files\backtester\test\backtest_test.cpp" -o CMakeFiles\back_test.dir\test\backtest_test.cpp.s
 
 # Object files for target back_test
 back_test_OBJECTS = \
-"CMakeFiles/back_test.dir/test/back_test.cpp.obj"
+"CMakeFiles/back_test.dir/test/backtest_test.cpp.obj"
 
 # External object files for target back_test
 back_test_EXTERNAL_OBJECTS =
 
-back_test.exe: CMakeFiles/back_test.dir/test/back_test.cpp.obj
+back_test.exe: CMakeFiles/back_test.dir/test/backtest_test.cpp.obj
 back_test.exe: CMakeFiles/back_test.dir/build.make
 back_test.exe: lib/libgtest_main.a
 back_test.exe: lib/libgtest.a

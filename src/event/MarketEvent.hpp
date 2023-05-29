@@ -6,7 +6,7 @@
 struct MarketEvent : Event {
 
   MarketEvent() : Event("Market"){};
-  void printEvent() override{};
+  // void printEvent() override{};
 };
 
 #endif

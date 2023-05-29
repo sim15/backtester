@@ -48,3 +48,11 @@ C:/Users/simor/Programming Files/backtester/build/libs/A/test/CMakeFiles/list_in
 C:/Users/simor/Programming Files/backtester/build/libs/A/test/CMakeFiles/install.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/test/CMakeFiles/install/local.dir
 C:/Users/simor/Programming Files/backtester/build/libs/A/test/CMakeFiles/install/strip.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build/CMakeFiles/spdlog.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build/CMakeFiles/test.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build/CMakeFiles/edit_cache.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build/CMakeFiles/rebuild_cache.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build/CMakeFiles/list_install_components.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build/CMakeFiles/install.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build/CMakeFiles/install/local.dir
+C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build/CMakeFiles/install/strip.dir

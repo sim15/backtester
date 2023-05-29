@@ -19,18 +19,24 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-3.26/Modules/CMakeRCInformation.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake"
+  "C:/Program Files/CMake/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake"
+  "C:/Program Files/CMake/share/cmake-3.26/Modules/CheckIncludeFile.cmake"
+  "C:/Program Files/CMake/share/cmake-3.26/Modules/CheckLibraryExists.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/Compiler/GNU-C.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/Compiler/GNU.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/FetchContent.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/FetchContent/CMakeLists.cmake.in"
+  "C:/Program Files/CMake/share/cmake-3.26/Modules/FindGit.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/FindPackageMessage.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/FindPython.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/FindPython/Support.cmake"
+  "C:/Program Files/CMake/share/cmake-3.26/Modules/FindThreads.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/GNUInstallDirs.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/GoogleTest.cmake"
+  "C:/Program Files/CMake/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake"
   "C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake"
@@ -54,6 +60,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "_deps/googletest-src/googletest/cmake/gtest.pc.in"
   "_deps/googletest-src/googletest/cmake/gtest_main.pc.in"
   "_deps/googletest-src/googletest/cmake/internal_utils.cmake"
+  "_deps/spdlog-src/CMakeLists.txt"
+  "_deps/spdlog-src/cmake/ide.cmake"
+  "_deps/spdlog-src/cmake/utils.cmake"
   "C:/Users/simor/Programming Files/backtester/libs/A/CMakeLists.txt"
   "C:/Users/simor/Programming Files/backtester/libs/A/test/CMakeLists.txt"
   )
@@ -67,6 +76,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "_deps/googletest-subbuild/CMakeLists.txt"
+  "_deps/spdlog-subbuild/CMakeLists.txt"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "_deps/googletest-build/CMakeFiles/CMakeDirectoryInformation.cmake"
   "_deps/googletest-build/googletest/generated/gmock.pc"
@@ -79,6 +89,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "_deps/googletest-build/googletest/CMakeFiles/CMakeDirectoryInformation.cmake"
   "libs/A/CMakeFiles/CMakeDirectoryInformation.cmake"
   "libs/A/test/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "_deps/spdlog-build/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -91,4 +102,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   "libs/A/CMakeFiles/A.dir/DependInfo.cmake"
   "libs/A/test/CMakeFiles/ALibraryTests.dir/DependInfo.cmake"
+  "_deps/spdlog-build/CMakeFiles/spdlog.dir/DependInfo.cmake"
   )

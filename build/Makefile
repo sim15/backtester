@@ -274,6 +274,19 @@ ALibraryTests/fast:
 	$(MAKE) $(MAKESILENT) -f libs\A\test\CMakeFiles\ALibraryTests.dir\build.make libs/A/test/CMakeFiles/ALibraryTests.dir/build
 .PHONY : ALibraryTests/fast
 
+#=============================================================================
+# Target rules for targets named spdlog
+
+# Build rule for target.
+spdlog: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 spdlog
+.PHONY : spdlog
+
+# fast build rule for target.
+spdlog/fast:
+	$(MAKE) $(MAKESILENT) -f _deps\spdlog-build\CMakeFiles\spdlog.dir\build.make _deps/spdlog-build/CMakeFiles/spdlog.dir/build
+.PHONY : spdlog/fast
+
 src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.obj: src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj
 .PHONY : src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.obj
 
@@ -322,29 +335,29 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\backtester.dir\build.make CMakeFiles/backtester.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-test/back_test.obj: test/back_test.cpp.obj
-.PHONY : test/back_test.obj
+test/backtest_test.obj: test/backtest_test.cpp.obj
+.PHONY : test/backtest_test.obj
 
 # target to build an object file
-test/back_test.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/test/back_test.cpp.obj
-.PHONY : test/back_test.cpp.obj
+test/backtest_test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/test/backtest_test.cpp.obj
+.PHONY : test/backtest_test.cpp.obj
 
-test/back_test.i: test/back_test.cpp.i
-.PHONY : test/back_test.i
+test/backtest_test.i: test/backtest_test.cpp.i
+.PHONY : test/backtest_test.i
 
 # target to preprocess a source file
-test/back_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/test/back_test.cpp.i
-.PHONY : test/back_test.cpp.i
+test/backtest_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/test/backtest_test.cpp.i
+.PHONY : test/backtest_test.cpp.i
 
-test/back_test.s: test/back_test.cpp.s
-.PHONY : test/back_test.s
+test/backtest_test.s: test/backtest_test.cpp.s
+.PHONY : test/backtest_test.s
 
 # target to generate assembly for a file
-test/back_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/test/back_test.cpp.s
-.PHONY : test/back_test.cpp.s
+test/backtest_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\back_test.dir\build.make CMakeFiles/back_test.dir/test/backtest_test.cpp.s
+.PHONY : test/backtest_test.cpp.s
 
 # Help Target
 help:
@@ -367,15 +380,16 @@ help:
 	@echo ... gmock_main
 	@echo ... gtest
 	@echo ... gtest_main
+	@echo ... spdlog
 	@echo ... src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.obj
 	@echo ... src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.i
 	@echo ... src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
-	@echo ... test/back_test.obj
-	@echo ... test/back_test.i
-	@echo ... test/back_test.s
+	@echo ... test/backtest_test.obj
+	@echo ... test/backtest_test.i
+	@echo ... test/backtest_test.s
 .PHONY : help
 
 

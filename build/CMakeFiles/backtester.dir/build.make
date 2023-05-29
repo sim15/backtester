@@ -110,6 +110,7 @@ backtester.exe: CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCS
 backtester.exe: CMakeFiles/backtester.dir/src/main.cpp.obj
 backtester.exe: CMakeFiles/backtester.dir/build.make
 backtester.exe: libs/A/libA.a
+backtester.exe: _deps/spdlog-build/libspdlogd.a
 backtester.exe: CMakeFiles/backtester.dir/linkLibs.rsp
 backtester.exe: CMakeFiles/backtester.dir/objects1.rsp
 backtester.exe: CMakeFiles/backtester.dir/link.txt

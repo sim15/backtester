@@ -11,7 +11,7 @@ struct FillEvent : Event {
         quantity(quantity), direction(direction), fillCost(fillCost),
         commission(commission){};
 
-  void printEvent() override{};
+  // void printEvent() override{};
 
   int timeindex;         // The bar-resolution when the order was filled
   std::string symbol;    // The instrument which was filled
@@ -19,6 +19,7 @@ struct FillEvent : Event {
   int quantity;          // The filled quantity
   std::string direction; // The direction of fill (’BUY’ or ’SELL’)
   int fillCost;          // The holdings value in dollars.
+                         //! (not known during backtesting)
   int commission;        //! An optional commission sent from IB.
 };
 

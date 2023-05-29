@@ -43,10 +43,6 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# add_subdirectory(libs/gtest-1.7.0)
-# enable_testing()
-# include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-
 # ##########
 # Project
 # ##########
@@ -60,12 +56,13 @@ set(SOURCE_FILES
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/OrderEvent.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/event/SignalEvent.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/CSVRow.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/TimeIndex.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/Date.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/DataHandler.hpp
-    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/DataHandler.cpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/OHLCAVData.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/ordermanagement/portfolio/PortfolioState.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/ordermanagement/portfolio/Portfolio.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/demo_setup/BasicOHLCAVPortfolio.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/main.cpp
@@ -77,7 +74,19 @@ foreach(LIBRARY ${LIBRARIES})
     add_subdirectory("${LIBRARIES_DIR}/${LIBRARY}")
 endforeach(LIBRARY)
 
-target_link_libraries(${PROJECT_NAME} ${LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${LIBRARIES})
+
+# ########
+# spdlog
+# ########
+FetchContent_Declare(
+    spdlog
+    GIT_REPOSITORY https://github.com/gabime/spdlog.git
+    GIT_TAG v1.11.0
+)
+
+FetchContent_MakeAvailable(spdlog)
+target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
 
 # https://medium.com/swlh/c-project-structure-for-cmake-67d60135f6f5
 # This basically let me import Backtester.h as #include "Backtester.h"
@@ -104,13 +113,14 @@ target_include_directories(${LIBRARY_NAME} PUBLIC
 enable_testing()
 
 set(TEST_FILES
-    ${TEST_DIR}/back_test.cpp
+    ${TEST_DIR}/backtest_test.cpp
 )
 
 add_executable(
     back_test
     "${TEST_FILES}"
 )
+
 target_link_libraries(
     back_test
     GTest::gtest_main

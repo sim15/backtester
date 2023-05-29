@@ -1,21 +1,21 @@
 [
 {
   "directory": "C:/Users/simor/Programming Files/backtester/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/backtester.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\backtester.dir\\src\\data\\sampleHandlers\\YahooFinanceCSV\\YahooFinanceCSVHandler.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\src\\data\\sampleHandlers\\YahooFinanceCSV\\YahooFinanceCSVHandler.cpp\"",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSPDLOG_COMPILED_LIB @CMakeFiles/backtester.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\backtester.dir\\src\\data\\sampleHandlers\\YahooFinanceCSV\\YahooFinanceCSVHandler.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\src\\data\\sampleHandlers\\YahooFinanceCSV\\YahooFinanceCSVHandler.cpp\"",
   "file": "C:/Users/simor/Programming Files/backtester/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp",
   "output": "CMakeFiles/backtester.dir/src/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp.obj"
 },
 {
   "directory": "C:/Users/simor/Programming Files/backtester/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/backtester.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\backtester.dir\\src\\main.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\src\\main.cpp\"",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSPDLOG_COMPILED_LIB @CMakeFiles/backtester.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\backtester.dir\\src\\main.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\src\\main.cpp\"",
   "file": "C:/Users/simor/Programming Files/backtester/src/main.cpp",
   "output": "CMakeFiles/backtester.dir/src/main.cpp.obj"
 },
 {
   "directory": "C:/Users/simor/Programming Files/backtester/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/back_test.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\back_test.dir\\test\\back_test.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\test\\back_test.cpp\"",
-  "file": "C:/Users/simor/Programming Files/backtester/test/back_test.cpp",
-  "output": "CMakeFiles/back_test.dir/test/back_test.cpp.obj"
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/back_test.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\back_test.dir\\test\\backtest_test.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\test\\backtest_test.cpp\"",
+  "file": "C:/Users/simor/Programming Files/backtester/test/backtest_test.cpp",
+  "output": "CMakeFiles/back_test.dir/test/backtest_test.cpp.obj"
 },
 {
   "directory": "C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/googlemock",
@@ -52,5 +52,47 @@
   "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/ALibraryTests.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\ALibraryTests.dir\\ATests.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\libs\\A\\test\\ATests.cpp\"",
   "file": "C:/Users/simor/Programming Files/backtester/libs/A/test/ATests.cpp",
   "output": "libs/A/test/CMakeFiles/ALibraryTests.dir/ATests.cpp.obj"
+},
+{
+  "directory": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSPDLOG_COMPILED_LIB @CMakeFiles/spdlog.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\spdlog.dir\\src\\spdlog.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\build\\_deps\\spdlog-src\\src\\spdlog.cpp\"",
+  "file": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-src/src/spdlog.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/spdlog.cpp.obj"
+},
+{
+  "directory": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSPDLOG_COMPILED_LIB @CMakeFiles/spdlog.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\spdlog.dir\\src\\stdout_sinks.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\build\\_deps\\spdlog-src\\src\\stdout_sinks.cpp\"",
+  "file": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-src/src/stdout_sinks.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.obj"
+},
+{
+  "directory": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSPDLOG_COMPILED_LIB @CMakeFiles/spdlog.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\spdlog.dir\\src\\color_sinks.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\build\\_deps\\spdlog-src\\src\\color_sinks.cpp\"",
+  "file": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-src/src/color_sinks.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/color_sinks.cpp.obj"
+},
+{
+  "directory": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSPDLOG_COMPILED_LIB @CMakeFiles/spdlog.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\spdlog.dir\\src\\file_sinks.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\build\\_deps\\spdlog-src\\src\\file_sinks.cpp\"",
+  "file": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-src/src/file_sinks.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/file_sinks.cpp.obj"
+},
+{
+  "directory": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSPDLOG_COMPILED_LIB @CMakeFiles/spdlog.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\spdlog.dir\\src\\async.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\build\\_deps\\spdlog-src\\src\\async.cpp\"",
+  "file": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-src/src/async.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/async.cpp.obj"
+},
+{
+  "directory": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSPDLOG_COMPILED_LIB @CMakeFiles/spdlog.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\spdlog.dir\\src\\cfg.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\build\\_deps\\spdlog-src\\src\\cfg.cpp\"",
+  "file": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-src/src/cfg.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/cfg.cpp.obj"
+},
+{
+  "directory": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DSPDLOG_COMPILED_LIB @CMakeFiles/spdlog.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\spdlog.dir\\src\\bundled_fmtlib_format.cpp.obj -c \"C:\\Users\\simor\\Programming Files\\backtester\\build\\_deps\\spdlog-src\\src\\bundled_fmtlib_format.cpp\"",
+  "file": "C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-src/src/bundled_fmtlib_format.cpp",
+  "output": "_deps/spdlog-build/CMakeFiles/spdlog.dir/src/bundled_fmtlib_format.cpp.obj"
 }
 ]

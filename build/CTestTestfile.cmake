@@ -7,3 +7,4 @@
 include("C:/Users/simor/Programming Files/backtester/build/back_test[1]_include.cmake")
 subdirs("_deps/googletest-build")
 subdirs("libs/A")
+subdirs("_deps/spdlog-build")

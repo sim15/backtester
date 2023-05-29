@@ -9,7 +9,7 @@ struct OrderEvent : Event {
              std::string direction)
       : Event("Order"), symbol(symbol), orderType(orderType),
         quantity(quantity), direction(direction){};
-  void printEvent() override{};
+  // void printEvent() override{};
 
   std::string symbol;    // The instrument to trade.
   std::string orderType; // "MKT" or "LMT" for Market or Limit.

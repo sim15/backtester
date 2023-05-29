@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/back_test.dir/test/back_test.cpp.obj"
-  "CMakeFiles/back_test.dir/test/back_test.cpp.obj.d"
+  "CMakeFiles/back_test.dir/test/backtest_test.cpp.obj"
+  "CMakeFiles/back_test.dir/test/backtest_test.cpp.obj.d"
   "back_test.exe"
   "back_test.exe.manifest"
   "back_test.pdb"

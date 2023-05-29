@@ -41,6 +41,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("C:/Users/simor/Programming Files/backtester/build/_deps/googletest-build/cmake_install.cmake")
   include("C:/Users/simor/Programming Files/backtester/build/libs/A/cmake_install.cmake")
+  include("C:/Users/simor/Programming Files/backtester/build/_deps/spdlog-build/cmake_install.cmake")
 
 endif()
 

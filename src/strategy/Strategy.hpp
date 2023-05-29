@@ -8,18 +8,19 @@
 #include <iostream>
 #include <queue>
 
-template <class Data> class Strategy {
+template <class Data, class IndexTypeComparable> class Strategy {
 
 public:
   Strategy(std::queue<std::shared_ptr<Event>> *eventQueue,
-           DataHandler<Data> *data)
-      : events(eventQueue), bars(data){};
+           DataHandler<Data, IndexTypeComparable> *data, std::string name)
+      : events(eventQueue), bars(data), name(name){};
 
-  virtual void calculate_signals();
+  virtual void calculate_signals() = 0;
 
 private:
   std::queue<std::shared_ptr<Event>> *events;
-  DataHandler<Data> *bars;
+  DataHandler<Data, IndexTypeComparable> *bars;
+  std::string name;
 };
 
 #endif

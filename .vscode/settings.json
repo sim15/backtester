@@ -91,7 +91,19 @@
     "stop_token": "cpp",
     "thread": "cpp",
     "utility": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "algorithm": "cpp",
+    "iterator": "cpp",
+    "memory_resource": "cpp",
+    "numeric": "cpp",
+    "random": "cpp",
+    "chrono": "cpp",
+    "cstdarg": "cpp",
+    "cstring": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "unordered_set": "cpp",
+    "cinttypes": "cpp"
   },
   "cmake.mingwSearchDirs": [
     "C:\\mingw-w64\\mingw64\\bin"

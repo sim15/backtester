@@ -9,6 +9,7 @@
 #include <demo_setup/BasicOHLCAVPortfolio.hpp>
 #include <demo_setup/NaiveStrategy.hpp>
 #include <event/Event.hpp>
+#include <event/MarketEvent.hpp>
 #include <memory>
 #include <queue>
 #include <string>
@@ -35,18 +36,24 @@ int main() {
   // while (true) {
   // TODO: add exit backtest condition in datahandler
 
-  // fetch bars (data) -> iterate over event queue until system fully up-to-date
+  // fetch bars (data) -> iterate over event queue until system fully
+  // up-to-date
   yahooRead.update_bars();
+  // yahooRead.update_bars();
 
   while (!eventQueue.empty()) {
     std::shared_ptr<Event> curEvent = eventQueue.front();
     eventQueue.pop();
 
     if (curEvent->type == "Market") {
-      // strategy.calculate_signals(event)
+      MarketEvent *newMarketData =
+          static_cast<MarketEvent *>(curEvent.get()); //?is this ok
+      // strategy.calculate_signals(*newMarketData)
       portfolio.updateTimeIndex();
     } else if (curEvent->type == "Signal") {
-      // portfolio.update_signal(event)
+      SignalEvent *newSignal =
+          static_cast<SignalEvent *>(curEvent.get()); //?is this ok
+      portfolio.updateSignal(*newSignal);
     } else if (curEvent->type == "Order") {
       // broker.execute_order(event)
     } else if (curEvent->type == "Fill") {
