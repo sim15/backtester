@@ -28,7 +28,7 @@ Date parseDateString(std::string date) {
 }
 
 /**
- * @brief Construct a new Yahoo Finance C S V Handler:: Yahoo Finance CSV
+ * @brief Construct a new Yahoo FinanceCSV Handler:: Yahoo Finance CSV
  * Handler object
  *
  * @param numSymbols number of symbols/files to be read
@@ -76,6 +76,7 @@ bool YahooFinanceCSVHandler::update_bars() {
   Date currentDate;
   std::vector<std::string> toWriteSymbol;
   std::vector<OHLCAVData> toWriteTicker;
+  int scalePrice = 100;
 
   for (auto const &[symbol, path] : dataFiles) {
     if (!dataFiles[symbol])
@@ -94,17 +95,18 @@ bool YahooFinanceCSVHandler::update_bars() {
       std::string adjClose(row[5]);
       std::string volume(row[6]);
 
-      OHLCAVData ticker(parseDateString(date), stoi(open), stoi(high),
-                        stoi(low), stoi(close), stoi(adjClose), stoi(volume));
+      OHLCAVData ticker(parseDateString(date), stoi(open) * scalePrice,
+                        stoi(high) * scalePrice, stoi(low) * scalePrice,
+                        stoi(close) * scalePrice, stoi(adjClose) * scalePrice,
+                        stoi(volume) * scalePrice);
 
       // keep track of current time index
       if (flag_dateNotRecorded) {
         currentDate = ticker.date;
 
-        const Date *ok = getLatestTimeIndex();
+        const Date *ok = getLatestTime();
         // check date is fresh
-        if (!((getLatestTimeIndex() == NULL) ||
-              (*getLatestTimeIndex() < currentDate)))
+        if (!((getLatestTime() == NULL) || (*getLatestTime() < currentDate)))
           throw std::runtime_error("Attempting to read stale data");
 
         flag_dateNotRecorded = false;

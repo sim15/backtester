@@ -3,6 +3,7 @@
 
 #include <data/TimeIndex.hpp>
 #include <iostream>
+#include <spdlog/fmt/bundled/format.h>
 
 class Date : private time_comparable<Date> {
 public:
@@ -45,6 +46,13 @@ private:
   int year_;
   int month_;
   int day_;
+};
+
+// specialize formater for logging
+template <> struct fmt::formatter<Date> : fmt::formatter<std::string> {
+  auto format(Date d, format_context &ctx) -> decltype(ctx.out()) {
+    return format_to(ctx.out(), "{}/{}/{}", d.month(), d.day(), d.year());
+  }
 };
 
 #endif

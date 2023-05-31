@@ -17,11 +17,11 @@ template <class Data, class IndexTypeComparable> class Portfolio {
 public:
   Portfolio(int numSymbols, DataHandler<Data, IndexTypeComparable> *bars,
             std::queue<std::shared_ptr<Event>> *events, std::string *symbols,
-            int startIndex, int initialCapital)
-      : numSymbols(numSymbols), bars(bars), events(events),
-        startIndex(startIndex), symbolList(symbols),
+            int initialCapital)
+      : numSymbols(numSymbols), bars(bars), events(events), symbolList(symbols),
         initialCapital(initialCapital) {
 
+    startIndex = bars->getTimeIndex();
     curState =
         PortfolioState(constructEmptyHoldings(), constructEmptyPositions(),
                        initialCapital, 0, initialCapital, startIndex);

@@ -46,7 +46,7 @@ public:
   // TODO: -contradict flexible access for strategies at any time step
 
   // get latest time index
-  const IndexTypeComparable *getLatestTimeIndex() const {
+  const IndexTypeComparable *getLatestTime() const {
     if (numDataPoints > 0)
       return &dateTimeSequence[numDataPoints - 1];
     return nullptr;

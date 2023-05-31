@@ -15,56 +15,65 @@
 #include <string>
 
 #include "spdlog/spdlog.h"
+#include <spdlog/fmt/bundled/format.h>
 
 int main() {
-  spdlog::info("Welcome to spdlog!");
+  int numSymbols = 2, initCapital = 1000;
+
   std::queue<std::shared_ptr<Event>> eventQueue;
 
-  std::string *files = new std::string[2]{
+  std::string *files = new std::string[numSymbols]{
       "C:/Users/simor/Programming "
       "Files/backtester/src/example_datafeed_daily/AAPL.csv",
       "C:/Users/simor/Programming "
       "Files/backtester/src/example_datafeed_daily/BABA.csv"};
 
-  std::string *symbols = new std::string[2]{"AAPL", "BABA"};
+  std::string *symbols = new std::string[numSymbols]{"AAPL", "BABA"};
 
   // set up data
-  YahooFinanceCSVHandler yahooRead(2, files, symbols, &eventQueue);
+  YahooFinanceCSVHandler yahooRead(numSymbols, files, symbols, &eventQueue);
   // ignore header row
   yahooRead.empty_read();
-  BasicOHLCAVPortfolio portfolio(2, &yahooRead, &eventQueue, symbols, 0, 1000);
+  spdlog::info("Initialized YahooFinance Handler on {} symbols ", numSymbols);
 
-  // a single heart beat of the system
+  // set up portfolio
+  BasicOHLCAVPortfolio portfolio(numSymbols, &yahooRead, &eventQueue, symbols,
+                                 initCapital);
+  spdlog::info(
+      "Initialized BasicOHLCAVPortfolio on {} with ${:03.2f} initial capital",
+      numSymbols, (double)initCapital / 100);
 
   // while (true) {
-  // TODO: add exit backtest condition in datahandler
+  for (int i = 0; i < 2; i++) {
+    // a single heart beat of the system
+    // TODO: add exit backtest condition in datahandler
 
-  // fetch bars (data) -> iterate over event queue until system fully
-  // up-to-date
-  yahooRead.update_bars();
-  // yahooRead.update_bars();
+    // !log will fail if no new data fetched
+    yahooRead.update_bars();
+    spdlog::info("Fetched new data for date {}", *yahooRead.getLatestTime());
 
-  while (!eventQueue.empty()) {
-    std::shared_ptr<Event> curEvent = eventQueue.front();
-    eventQueue.pop();
+    // iterate over event queue until system fully
+    // up-to-date
+    while (!eventQueue.empty()) {
+      std::shared_ptr<Event> curEvent = eventQueue.front();
+      eventQueue.pop();
 
-    if (curEvent->type == "Market") {
-      MarketEvent *newMarketData =
-          static_cast<MarketEvent *>(curEvent.get()); //?is this ok
-      // strategy.calculate_signals(*newMarketData)
-      portfolio.updateTimeIndex();
-    } else if (curEvent->type == "Signal") {
-      SignalEvent *newSignal =
-          static_cast<SignalEvent *>(curEvent.get()); //?is this ok
-      portfolio.updateSignal(*newSignal);
-    } else if (curEvent->type == "Order") {
-      // broker.execute_order(event)
-    } else if (curEvent->type == "Fill") {
-      // portfolio.update_fill(event)
+      if (curEvent->type == "Market") {
+        MarketEvent *newMarketData =
+            static_cast<MarketEvent *>(curEvent.get()); //?is this ok
+        // strategy.calculate_signals(*newMarketData)
+        portfolio.updateTimeIndex();
+      } else if (curEvent->type == "Signal") {
+        SignalEvent *newSignal =
+            static_cast<SignalEvent *>(curEvent.get()); //?is this ok
+        portfolio.updateSignal(*newSignal);
+      } else if (curEvent->type == "Order") {
+        // broker.execute_order(event)
+      } else if (curEvent->type == "Fill") {
+        // portfolio.update_fill(event)
+      }
     }
   }
-
-  // }
 
   return 0;
 }
