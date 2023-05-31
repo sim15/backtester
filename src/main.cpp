@@ -46,11 +46,13 @@ int main() {
   // while (true) {
   for (int i = 0; i < 2; i++) {
     // a single heart beat of the system
+    //! IMPORTANT: must only have one market event per heartbeat
+    //! IMPORTANT: thus, update bars only once per heartbeat
     // TODO: add exit backtest condition in datahandler
 
     // !log will fail if no new data fetched
     yahooRead.update_bars();
-    spdlog::info("Fetched new data for date {}", *yahooRead.getLatestTime());
+    spdlog::info("Fetched new data for date {}", *yahooRead.get_latest_time());
 
     // iterate over event queue until system fully
     // up-to-date

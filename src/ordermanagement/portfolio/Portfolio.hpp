@@ -12,6 +12,9 @@
 #include <ordermanagement/portfolio/PortfolioState.hpp>
 #include <vector>
 
+#include "spdlog/spdlog.h"
+#include <spdlog/fmt/bundled/format.h>
+
 template <class Data, class IndexTypeComparable> class Portfolio {
 
 public:
@@ -21,7 +24,7 @@ public:
       : numSymbols(numSymbols), bars(bars), events(events), symbolList(symbols),
         initialCapital(initialCapital) {
 
-    startIndex = bars->getTimeIndex();
+    startIndex = bars->get_time_index();
     curState =
         PortfolioState(constructEmptyHoldings(), constructEmptyPositions(),
                        initialCapital, 0, initialCapital, startIndex);
@@ -80,6 +83,7 @@ Portfolio<Data, IndexTypeComparable>::constructEmptyHoldings() {
  * @brief return default (all 0) empty positions
  *
  * @tparam Data
+ * @tparam IndexTypeComparable
  * @return std::map<std::string, int>
  */
 template <class Data, class IndexTypeComparable>
@@ -97,22 +101,24 @@ Portfolio<Data, IndexTypeComparable>::constructEmptyPositions() {
  * Reflects PREVIOUS bar, i.e. all current market data at this stage is known.
  * does not actually modify current portfolio state, just recomputes value of
  * holdings.
+ *
  * @tparam Data
+ * @tparam IndexTypeComparable
  */
 template <class Data, class IndexTypeComparable>
 void Portfolio<Data, IndexTypeComparable>::updateTimeIndex() {
-  // fetch all data
+  // fetch all latest data
   std::map<std::string, const Data *> data;
   for (int i = 0; i < numSymbols; i++) {
     std::string symbol = symbolList[i];
     data[symbol] = bars->get_latest_bar(symbol);
   }
-  // get index of data
-  int curTimeIndex = bars->getTimeIndex();
+  // get index of data (number of datapoints)
+  int curTimeIndex = bars->get_time_index();
 
   // holdings
   std::map<std::string, int> holdings(curState.holdings); // copy holdings
-  int newTotal = curState.cash;
+  int newTotal = curState.cash;                           // TODO: verify
 
   // recalculate/update each holding based on market price
   for (int i = 0; i < numSymbols; i++) {
@@ -122,12 +128,17 @@ void Portfolio<Data, IndexTypeComparable>::updateTimeIndex() {
     newTotal += marketValue;
   }
 
-  // TODO: change curTimeINdex to be Date and not int
+  // TODO?: change curTimeINdex to be Date and not int
   PortfolioState valueState =
       PortfolioState(holdings, curState.positions, curState.cash,
                      curState.commission, newTotal, curTimeIndex);
 
   historicalStates.push_back(valueState);
+
+  spdlog::info("Portfolio state saved to history for {}th time index ({}\t| "
+               "Cash: ${}, Total: ${}, Commission: ${})",
+               curTimeIndex, *bars->get_nth_time(curTimeIndex), valueState.cash,
+               valueState.total, valueState.commission);
 }
 
 /**
@@ -202,6 +213,8 @@ void Portfolio<Data, IndexTypeComparable>::updateSignal(SignalEvent event) {
   std::vector<OrderEvent> orders = generate_orders(event);
   for (auto &order : orders)
     (*events).push(std::make_shared<Event>(order));
+  spdlog::debug("Processed signal and added {} generated order events to queue",
+                orders.size());
 }
 
 #endif

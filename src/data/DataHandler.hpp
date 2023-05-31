@@ -46,12 +46,18 @@ public:
   // TODO: -contradict flexible access for strategies at any time step
 
   // get latest time index
-  const IndexTypeComparable *getLatestTime() const {
-    if (numDataPoints > 0)
-      return &dateTimeSequence[numDataPoints - 1];
+  const IndexTypeComparable *get_latest_time() const {
+    return get_nth_time(get_time_index());
+  }
+  const IndexTypeComparable *get_nth_time(int n) const {
+    if ((numDataPoints > 0) && ((0 <= n) && (n < numDataPoints)))
+      return &dateTimeSequence[n];
+
+    spdlog::debug("Could not retrieve {}th time index (length of time is {})",
+                  n, numDataPoints);
     return nullptr;
   }
-  int getTimeIndex() const { return numDataPoints; };
+  int get_time_index() const { return numDataPoints - 1; };
 
 protected:
   std::queue<std::shared_ptr<Event>> *events;

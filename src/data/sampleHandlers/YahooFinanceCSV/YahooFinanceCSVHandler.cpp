@@ -70,6 +70,7 @@ void YahooFinanceCSVHandler::empty_read() {
  * simulates NEW price data (no retroactive updates; each ticker must be for
  * same day) allows missing data points but not misaligned dates on ticker
  */
+// TODO: does not allow for missing data yet
 bool YahooFinanceCSVHandler::update_bars() {
   // use first date in sheet as reference
   bool flag_dateNotRecorded = true;
@@ -104,9 +105,10 @@ bool YahooFinanceCSVHandler::update_bars() {
       if (flag_dateNotRecorded) {
         currentDate = ticker.date;
 
-        const Date *ok = getLatestTime();
+        const Date *ok = get_latest_time();
         // check date is fresh
-        if (!((getLatestTime() == NULL) || (*getLatestTime() < currentDate)))
+        if (!((get_latest_time() == NULL) ||
+              (*get_latest_time() < currentDate)))
           throw std::runtime_error("Attempting to read stale data");
 
         flag_dateNotRecorded = false;
@@ -132,5 +134,6 @@ bool YahooFinanceCSVHandler::update_bars() {
     writeDataPoint(toWriteSymbol[i], toWriteTicker[i].date, toWriteTicker[i]);
 
   (*events).push(std::make_shared<MarketEvent>());
+
   return true;
 }
