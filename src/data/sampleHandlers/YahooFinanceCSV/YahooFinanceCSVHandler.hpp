@@ -17,7 +17,7 @@ public:
                          std::queue<std::shared_ptr<Event>> *eventQueue);
   // YahooFinanceCSVHandler();
 
-  void update_bars() override;
+  bool update_bars() override;
   void empty_read();
   // ~YahooFinanceCSVHandler();
 

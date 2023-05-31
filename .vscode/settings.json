@@ -103,7 +103,13 @@
     "forward_list": "cpp",
     "list": "cpp",
     "unordered_set": "cpp",
-    "cinttypes": "cpp"
+    "cinttypes": "cpp",
+    "bitset": "cpp",
+    "charconv": "cpp",
+    "codecvt": "cpp",
+    "regex": "cpp",
+    "future": "cpp",
+    "span": "cpp"
   },
   "cmake.mingwSearchDirs": [
     "C:\\mingw-w64\\mingw64\\bin"

@@ -14,7 +14,10 @@
 #include <queue>
 #include <string>
 
+#include "spdlog/spdlog.h"
+
 int main() {
+  spdlog::info("Welcome to spdlog!");
   std::queue<std::shared_ptr<Event>> eventQueue;
 
   std::string *files = new std::string[2]{
