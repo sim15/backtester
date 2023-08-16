@@ -64,6 +64,8 @@ set(SOURCE_FILES
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/data/sampleHandlers/YahooFinanceCSV/YahooFinanceCSVHandler.cpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/ordermanagement/portfolio/PortfolioState.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/ordermanagement/portfolio/Portfolio.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/strategy/Strategy.hpp
+    ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/strategy/sampleStrategies/BuyAndHoldStrategy.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/demo_setup/BasicOHLCAVPortfolio.hpp
     ${CMAKE_SOURCE_DIR}/${SOURCE_DIR}/main.cpp
 )
@@ -89,7 +91,7 @@ FetchContent_MakeAvailable(spdlog)
 target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
 
 # https://medium.com/swlh/c-project-structure-for-cmake-67d60135f6f5
-# This basically let me import Backtester.h as #include "Backtester.h"
+# TODO: This lets us import Backtester.h as #include "Backtester.h"
 # when I used it internally in my library and as #include <BacktestLib/Backtester.h>
 # when library is exposed to someone else.
 set(LIBRARY_NAME

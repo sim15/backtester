@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "spdlog/spdlog.h"
+#include <math.h>
 #include <spdlog/fmt/bundled/format.h>
 
 template <class Data, class IndexTypeComparable> class Portfolio {
@@ -31,7 +32,7 @@ public:
   };
 
   std::map<std::string, int> constructEmptyHoldings();
-  std::map<std::string, int> constructEmptyPositions();
+  std::map<std::string, float> constructEmptyPositions();
 
   void updateTimeIndex();
 
@@ -40,11 +41,18 @@ public:
   void updateFill(FillEvent event);
   void updateSignal(SignalEvent event);
 
-  virtual int compute_market_value(std::string symbol, int quantity) = 0;
-  virtual std::vector<OrderEvent> generate_orders(SignalEvent event) = 0;
-
   std::string *getSymbols() const { return symbolList; };
   int getNumSymbols() const { return numSymbols; };
+  float getCurrentPositions(std::string symb) {
+    return curState.positions[symb];
+  };
+  int getCash() const { return curState.cash; };
+
+  float compute_qty_from_cash(std::string symbol, int cash) const;
+
+  virtual int compute_market_value(std::string symbol,
+                                   float quantity) const = 0;
+  virtual std::vector<OrderEvent> generate_orders(SignalEvent event) = 0;
 
 protected:
   DataHandler<Data, IndexTypeComparable>
@@ -80,16 +88,45 @@ Portfolio<Data, IndexTypeComparable>::constructEmptyHoldings() {
 }
 
 /**
+ * @brief return how much of an asset can be purchased with X amount of cash.
+ * binary search on potentially non-linear (but monotonic) pricing function.
+ *
+ * @tparam int
+ * @return int
+ */
+template <class Data, class IndexTypeComparable>
+float Portfolio<Data, IndexTypeComparable>::compute_qty_from_cash(
+    std::string symbol, int cash) const {
+  // ! TODO 7/17: STOPPED HERE. Currently, the binary search needs to be checked
+  // ! for functionality. the main issue after: we need to define precision of
+  // ! the quantity value. if the asset is 1000 dollars and we only have 31, we
+  // ! may want to buy a fraction of the asset. Setting everything as a
+  // ! double/float may or may not be idea. fix and add the change to the
+  // ! increment of the binary search.
+  float l = 0.0;
+  float r = 10000000.00; // ?arbitrary upper order limit
+  while (l < r) {
+    float mid = l + ((r - l) / 2);
+    float cost = compute_market_value(symbol, mid);
+    if (cost < cash)
+      l = mid;
+    else
+      r = mid - 1;
+  }
+  return l;
+}
+
+/**
  * @brief return default (all 0) empty positions
  *
  * @tparam Data
  * @tparam IndexTypeComparable
- * @return std::map<std::string, int>
+ * @return std::map<std::string, float>
  */
 template <class Data, class IndexTypeComparable>
-std::map<std::string, int>
+std::map<std::string, float>
 Portfolio<Data, IndexTypeComparable>::constructEmptyPositions() {
-  std::map<std::string, int> positions;
+  std::map<std::string, float> positions;
   for (int i = 0; i < numSymbols; i++)
     positions[symbolList[i]] = 0;
 

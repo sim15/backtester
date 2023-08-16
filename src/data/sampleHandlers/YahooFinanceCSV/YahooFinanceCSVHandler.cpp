@@ -99,7 +99,7 @@ bool YahooFinanceCSVHandler::update_bars() {
       OHLCAVData ticker(parseDateString(date), stoi(open) * scalePrice,
                         stoi(high) * scalePrice, stoi(low) * scalePrice,
                         stoi(close) * scalePrice, stoi(adjClose) * scalePrice,
-                        stoi(volume) * scalePrice);
+                        stoi(volume));
 
       // keep track of current time index
       if (flag_dateNotRecorded) {

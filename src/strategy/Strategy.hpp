@@ -17,7 +17,7 @@ public:
 
   virtual void calculate_signals() = 0;
 
-private:
+protected:
   std::queue<std::shared_ptr<Event>> *events;
   DataHandler<Data, IndexTypeComparable> *bars;
   std::string name;

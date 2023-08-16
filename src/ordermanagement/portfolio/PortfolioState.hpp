@@ -6,7 +6,7 @@
 
 struct PortfolioState {
   PortfolioState(std::map<std::string, int> hold,
-                 std::map<std::string, int> pos, int cash, int commission,
+                 std::map<std::string, float> pos, int cash, int commission,
                  int total, int timeIndex)
       : holdings(hold), positions(pos), cash(cash), commission(commission),
         total(total), timeIndex(timeIndex){};
@@ -14,7 +14,7 @@ struct PortfolioState {
   PortfolioState(){};
 
   std::map<std::string, int> holdings;
-  std::map<std::string, int> positions;
+  std::map<std::string, float> positions;
   int cash;
   int commission;
   int total;

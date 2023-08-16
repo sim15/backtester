@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include <Backtester.h>
+
 #include <A/A.h>
 #include <data/CSVRow.hpp>
 #include <data/DataHandler.hpp>
@@ -12,6 +14,8 @@
 #include <event/MarketEvent.hpp>
 #include <memory>
 #include <queue>
+#include <strategy/Strategy.hpp>
+#include <strategy/sampleStrategies/BuyAndHoldStrategy.hpp>
 #include <string>
 
 #include "spdlog/spdlog.h"
@@ -41,7 +45,12 @@ int main() {
                                  initCapital);
   spdlog::info(
       "Initialized BasicOHLCAVPortfolio on {} with ${:03.2f} initial capital",
-      numSymbols, (double)initCapital / 100);
+      numSymbols, (double)portfolio.getCash() / 100.00);
+
+  // TODO: see if maybe pass by refernce is better?
+  // https://stackoverflow.com/a/32959891
+  BuyAndHoldStrategy<OHLCAVData, Date> strategy(&eventQueue, &yahooRead,
+                                                &portfolio);
 
   // while (true) {
   for (int i = 0; i < 2; i++) {
@@ -62,12 +71,12 @@ int main() {
 
       if (curEvent->type == "Market") {
         MarketEvent *newMarketData =
-            static_cast<MarketEvent *>(curEvent.get()); //?is this ok
-        // strategy.calculate_signals(*newMarketData)
+            static_cast<MarketEvent *>(curEvent.get()); //? is this ok
+        strategy.calculate_signals();
         portfolio.updateTimeIndex();
       } else if (curEvent->type == "Signal") {
         SignalEvent *newSignal =
-            static_cast<SignalEvent *>(curEvent.get()); //?is this ok
+            static_cast<SignalEvent *>(curEvent.get()); //? is this ok
         portfolio.updateSignal(*newSignal);
       } else if (curEvent->type == "Order") {
         // broker.execute_order(event)
